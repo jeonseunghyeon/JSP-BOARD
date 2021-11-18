@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<!-- test -->
 	<!-- 로그인 페이지로 이동하는 코드 -->
 	<script >location.href="login.jsp"</script>
 
