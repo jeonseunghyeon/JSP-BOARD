@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
+*{
+	font-family: 'Do Hyeon';
+}
+
+h1 {
+	font-family: 'Jua'
+}
+
