@@ -13,7 +13,7 @@ JSP기반으로 만든 음악공유 게시판 웹 입니다.
 
 - git
 - tomcat9.0
-- mysql8.0
+- mysql8.0.26
 - jsp
 - css
 - HTML5
