@@ -56,10 +56,10 @@
 				<form method="post" action="joinAction.jsp">
 					<h3 style="text-align: center;">회원가입 화면</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="u_id" maxlength="20">
+						<input type="text" class="form-control" placeholder="아이디" name="u_ID" maxlength="20">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="u_password" maxlength="20">
+						<input type="password" class="form-control" placeholder="비밀번호" name="u_Password" maxlength="20">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="이름" name="u_name" maxlength="20">

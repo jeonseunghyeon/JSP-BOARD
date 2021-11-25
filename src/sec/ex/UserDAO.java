@@ -27,14 +27,27 @@ public class UserDAO {
 		}
 	}
 	
-	public int login(String u_id, String u_password) {
-		String sql ="select u_Password from";
+	public int login(String u_ID, String u_Password) {
+		String sql ="select u_Password from member where u_ID=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(0, u_ID);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(rs.getString(1).equals(u_Password)) {
+					return 1;
+				}else {
+					return 0;
+				} 
+			}return -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -2; //¿À·ù
 		
 		
-		
-		
-		
-		return -2;
 	}
 
 }
