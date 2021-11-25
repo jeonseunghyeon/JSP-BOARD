@@ -46,7 +46,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -2; //¿À·ù
-		//dd
+		
 		
 	}
 
