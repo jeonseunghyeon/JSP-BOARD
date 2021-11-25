@@ -22,5 +22,5 @@ public class UserBean {
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
-	
+	//test
 }
