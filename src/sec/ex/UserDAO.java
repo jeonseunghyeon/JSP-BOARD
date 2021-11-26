@@ -18,7 +18,7 @@ public class UserDAO {
 			
 			String URL ="jdbc:mysql://localhost:3306/jsp_web_commu";
 			String id = "root";
-			String password ="chun3032";
+			String password ="2468";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn = DriverManager.getConnection(URL,id,password);
