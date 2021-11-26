@@ -19,8 +19,8 @@ public class UserBean {
 	public String getU_name() {
 		return u_Name;
 	}
-	public void setU_name(String u_name) {
-		this.u_Name = u_name;
+	public void setU_name(String u_Name) {
+		this.u_Name = u_Name;
 	}
 
 }
