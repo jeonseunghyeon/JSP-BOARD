@@ -7,7 +7,7 @@ JSP기반으로 만든 음악 커뮤니티 게시판 웹 입니다.
 - Eclipse enterprise java and web Developers
 - git
 - tomcat9.0
-- mysql8.0
+- mysql8.0.26
 
 ## 사용기술
 
