@@ -3,7 +3,7 @@ package sec.ex;
 public class UserBean {
 	String u_ID;
 	String u_Password;
-	String u_name;
+	String u_Name;
 	public String getU_ID() {
 		return u_ID;
 	}
@@ -17,10 +17,10 @@ public class UserBean {
 		this.u_Password = u_Password;
 	}
 	public String getU_name() {
-		return u_name;
+		return u_Name;
 	}
 	public void setU_name(String u_name) {
-		this.u_name = u_name;
+		this.u_Name = u_name;
 	}
 
 }

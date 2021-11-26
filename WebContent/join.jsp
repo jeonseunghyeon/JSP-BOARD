@@ -46,8 +46,6 @@
 			</ul>
 		</div>
 	</nav>
-	
-	
 	<!-- 회원가입 양식 -->
 	<div class="container container-table">		<!-- 하나의 영역 생성 -->
 		<div class="row vertical-center-row">	<!-- 영역 크기 -->
