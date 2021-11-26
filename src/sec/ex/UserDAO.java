@@ -13,12 +13,10 @@ public class UserDAO {
 	
 	public UserDAO() {
 		
-		
 		try {
-			
-			String URL ="jdbc:mysql://localhost:3306/jsp_web_commu";
+			String URL ="jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8;\r\n";
 			String id = "root";
-			String password ="2468";
+			String password ="";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn = DriverManager.getConnection(URL,id,password);
