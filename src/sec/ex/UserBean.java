@@ -16,10 +16,10 @@ public class UserBean {
 	public void setU_Password(String u_Password) {
 		this.u_Password = u_Password;
 	}
-	public String getU_name() {
+	public String getU_Name() {
 		return u_Name;
 	}
-	public void setU_name(String u_Name) {
+	public void setU_Name(String u_Name) {
 		this.u_Name = u_Name;
 	}
 

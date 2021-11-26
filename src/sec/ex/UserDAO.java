@@ -16,7 +16,7 @@ public class UserDAO {
 		try {
 			String URL ="jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
 			String id = "root";
-			String password ="";
+			String password ="2468";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn = DriverManager.getConnection(URL,id,password);
@@ -55,7 +55,7 @@ public class UserDAO {
 			pstmt= conn.prepareStatement(sql);
 			pstmt.setString(1,user.getU_ID());
 			pstmt.setString(2,user.getU_Password());
-			pstmt.setString(3,user.getU_name());
+			pstmt.setString(3,user.getU_Name());
 			
 			return pstmt.executeUpdate();
 		} catch (Exception e) {

@@ -6,7 +6,7 @@
     <jsp:useBean id="user" class="sec.ex.UserBean" scope ="page"></jsp:useBean>
     <jsp:setProperty name="user" property="u_ID"/>
     <jsp:setProperty name="user" property="u_Password"/>
-    <jsp:setProperty name="user" property="u_name"/>
+    <jsp:setProperty name="user" property="u_Name"/>
 <!DOCTYPE html>
 <html>
 <head>
