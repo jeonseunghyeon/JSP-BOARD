@@ -14,9 +14,12 @@ public class UserDAO {
 	public UserDAO() {
 		
 		try {
-			String URL ="jdbc:mysql://localhost:3306/jsp_web_commu?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
+			
+
+			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
+
 			String id = "root";
-			String password ="";
+			String password ="chun3032";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn = DriverManager.getConnection(URL,id,password);
@@ -50,6 +53,9 @@ public class UserDAO {
 	public int join(UserBean user) {
 		
 		String sql="insert into member(u_ID,u_Password,u_name) values(?,?,?)";
+
+	
+
 		
 		try {
 			pstmt= conn.prepareStatement(sql);
