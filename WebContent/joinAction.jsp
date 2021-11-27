@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <jsp:useBean id="user" class="sec.ex.UserBean" scope ="page"></jsp:useBean>
+    <jsp:useBean id="user" class="sec.ex.UserBean" scope ="page"/>
     <jsp:setProperty name="user" property="u_ID"/>
     <jsp:setProperty name="user" property="u_Password"/>
     <jsp:setProperty name="user" property="u_name"/>
@@ -38,7 +38,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('회원가입 성공')");
-			script.println("location href='main.jsp'");
+			script.println("location.href='main.jsp'");
 			script.println("</script>");
 		}
 	}

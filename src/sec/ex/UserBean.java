@@ -1,6 +1,8 @@
 package sec.ex;
 
 public class UserBean {
+	
+
 	String u_ID;
 	String u_Password;
 	String u_name;
@@ -22,5 +24,7 @@ public class UserBean {
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
+	
+	
 
 }
