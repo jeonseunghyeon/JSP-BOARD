@@ -4,8 +4,8 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="user" class="sec.ex.UserBean" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="u_ID" />
+<jsp:setProperty name="user" property="u_Password" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +15,12 @@
 <body>
 	<%
 		// 현재 세션 상태를 체크한다
-		String userID = null;
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
+		String u_ID = null;
+		if(session.getAttribute("u_ID") != null){
+			u_ID = (String)session.getAttribute("u_ID");
 		}
 		// 이미 로그인했으면 다시 로그인을 할 수 없게 한다
-		if(userID != null){
+		if(u_ID != null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어 있습니다')");
@@ -31,7 +31,7 @@
 		int result = userDAO.login(user.getU_ID(), user.getU_Password());
 		if(result == 1){
 			// 로그인에 성공하면 세션을 부여
-			session.setAttribute("userID", user.getU_ID());
+			session.setAttribute("u_ID", user.getU_ID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인 성공')");
