@@ -14,6 +14,14 @@
 <title>게시판</title>
 </head>
 <body>
+
+<%
+	String u_ID = null;
+	if(session.getAttribute("u_ID") != null){
+		u_ID = (String)session.getAttribute("u_ID");
+	}
+
+%>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->
@@ -34,6 +42,11 @@
 				<li><li class="active"><a href="main.jsp">메인</a></li>
 				<li><a href="bbs.jsp">게시판</a></li>
 			</ul>
+			
+			<%
+			
+				if(u_ID == null){
+			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -47,6 +60,27 @@
 					</ul>
 				</li>
 			</ul>
+			
+			<%
+				}else{
+			%>
+			
+			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">회원관리<span class="caret"></span></a>
+					<!-- 드랍다운 아이템 영역 -->	
+					<ul class="dropdown-menu">
+						<li><a href="logoutAction.jsp">로그아웃</a></li>
+						
+					</ul>
+				</li>
+			</ul>
+			<%
+				}
+			%>
 		</div>
 	</nav>
 
