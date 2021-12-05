@@ -68,10 +68,6 @@
 		<div class="row">
 			<!-- left content -->
 			<div class="col-sm-4">
-				<h2>폴블랑코</h2>
-				<p>요즘 핫한 아티스트</p>
-				<img src="paul.jpg" class="img-fluid">
-				<p>지난 4월 캐나다에서 날아든 앨범 <Lake of Fire>는 단숨에 국내 리스너들 사이에서 화제가 됐다. 앨범을 만든 장본인은 토론토 출신의 힙합 아티스트, 폴 블랑코. 그는 한국말보다 영어로 가사를 쓰는 것이 편하지만, 두루치기와 소주를 좋아한다고 말한다.</p>
 				<!-- side menu (link) -->
 				<h3>사이드 메뉴</h3>
 				<p>오늘의 아티스트!</p>
@@ -80,15 +76,20 @@
 					<li class="list-group-item list-group-item-action"><a href="#">기리보이</a></li>
 					<li class="list-group-item list-group-item-action"><a href="#">있지</a></li>
 				</ul>
-
-
 			</div>
 			<!-- right content -->
 			<div class="col-sm-8">
+				<div>
+				<h2>폴블랑코</h2>
+				<p>요즘 핫한 아티스트</p>
+				<img src="paul.jpg" class="img-fluid">
+				<p>지난 4월 캐나다에서 날아든 앨범 <Lake of Fire>는 단숨에 국내 리스너들 사이에서 화제가 됐다. 앨범을 만든 장본인은 토론토 출신의 힙합 아티스트, 폴 블랑코. 그는 한국말보다 영어로 가사를 쓰는 것이 편하지만, 두루치기와 소주를 좋아한다고 말한다.</p>
+				</div>
+				<div>
 				<h2>저스틴버버</h2>
 				<p>10월 23일 2번째 싱글 'Sorry'를 발매</p>
 				<img src="biber.jpg" class="img-fluid">
-
+				</div>
 				<hr>
 				<!-- side menu (link) -->
 				<h3>오늘의 인터뷰!</h3>
@@ -105,6 +106,7 @@
 				<p>특히 있지는 이미 수준급의 실력을 가진 '완성형 그룹'이라는 점이 높이 평가받았다. 한 관계자는 "신인답지 않은 파워풀한 안무와 퍼포먼스, 화려한 무대 매너가 압도적"이라며 
 					"'신인'이 아닌 올해의 가수라고 해도 지나침이 없다"라고 평했다. 다른 관계자는 
 					"올해 가장 두드러진 활약을 보여줬다"라며 "이미 '완성형'인 그룹으로 앞으로가 더 기대된다"라고 귀띔했다.</p>
+					
 
 				<!--test -->
 			</div>
