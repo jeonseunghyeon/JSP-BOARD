@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class BoardDAO {
 	
@@ -16,7 +17,7 @@ public class BoardDAO {
 			
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String ID = "root";
-			String Password = "";
+			String Password = "chun3032";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, ID, Password);
 			
@@ -79,6 +80,47 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		 return -1; //데이터베이스 오류
+	 }
+	 
+	 public ArrayList<BoardBean> getList(int pageNumber){
+		 String sql = "select * from board where boardID < ? and boardAvailable = 1 order by boardID desc limit 10";
+		 ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+		 
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
+			 while(rs.next()) {
+				 BoardBean boardbean = new BoardBean();
+				 boardbean.setBoardID(rs.getInt(1));
+				 boardbean.setBoardTitle(rs.getString(2));
+				 boardbean.setUserID(rs.getString(3));
+				 boardbean.setBoardDate(rs.getString(4));
+				 boardbean.setBoardContent(rs.getString(5));
+				 boardbean.setBoardAvailable(rs.getInt(6));
+				 list.add(boardbean);
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}return list;
+		 
+	 }
+	 
+	 public boolean nextPage(int pageNumber) {
+		 String sql = "select * from board where boardID < ? and boardAvailable = 1";
+		 try {
+			 
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 return true;
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return false;
 	 }
 	
 	

@@ -10,6 +10,12 @@ public class BoardBean {
 	int boardAvailable;
 	
 	
+	public int getBoardAvailable() {
+		return boardAvailable;
+	}
+	public void setBoardAvailable(int boardAvailable) {
+		this.boardAvailable = boardAvailable;
+	}
 	public int getBoardID() {
 		return boardID;
 	}
@@ -40,10 +46,5 @@ public class BoardBean {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public int getBoardAvailable() {
-		return boardAvailable;
-	}
-	public void setBoardAvailable(int boardAvailable) {
-		this.boardAvailable = boardAvailable;
-	}
+
 }
