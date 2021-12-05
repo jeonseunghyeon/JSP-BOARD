@@ -1,4 +1,4 @@
-package sec.ex;
+package BoardCategory;
 
 import java.sql.Connection;
 

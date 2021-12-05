@@ -1,4 +1,4 @@
-package sec.ex;
+package user;
 
 public class UserBean {
 	
