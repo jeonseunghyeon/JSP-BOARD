@@ -18,7 +18,7 @@ public class UserDAO {
 
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String id = "root";
-			String password ="";
+			String password ="chun3032";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			conn = DriverManager.getConnection(URL,id,password);
@@ -45,7 +45,7 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2; //¿À·ù
+		return -2; //ï¿½ï¿½ï¿½ï¿½
 		
 	}
 	
