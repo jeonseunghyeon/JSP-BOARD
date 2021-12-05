@@ -1,9 +1,13 @@
 package sec.ex;
-
+import user.UserBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+
+
+
 
 public class UserDAO {
 	
@@ -15,12 +19,11 @@ public class UserDAO {
 		
 		try {
 			
-
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String id = "root";
 			String password ="chun3032";
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+		
 			conn = DriverManager.getConnection(URL,id,password);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -45,14 +48,13 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2; //¿À·ù
+		return -2; //ï¿½ï¿½ï¿½ï¿½
 		
 	}
 	
 	public int join(UserBean user) {
 		
 		String sql="insert into member(u_ID,u_Password,u_name) values(?,?,?)";
-
 		
 		try {
 			pstmt= conn.prepareStatement(sql);
