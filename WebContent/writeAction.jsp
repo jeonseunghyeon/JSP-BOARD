@@ -1,10 +1,10 @@
-<%@page import="sec.ex.UserDAO"%>
+<%@page import="user.UserDAO"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import = "sec.ex.BoardDAO" %>
+<%@page import = "Board.BoardDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <jsp:useBean id="board" class="sec.ex.BoardBean" scope ="page"/>
+    <jsp:useBean id="board" class="Board.BoardBean" scope ="page"/>
     <jsp:setProperty name="board" property="boardTitle"/>
     <jsp:setProperty name="board" property="boardContent"/>
     

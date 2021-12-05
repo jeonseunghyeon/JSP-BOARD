@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
 
 *{
-	font-family: 'Do Hyeon';
+	font-family:'Roboto' , initial;  font-weight: 300;
 }
 
 h1 {
-	font-family: 'Jua'
+	font-family: 'Noto Sans KR',initial;
 }
 

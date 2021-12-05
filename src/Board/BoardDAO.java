@@ -1,4 +1,4 @@
-package sec.ex;
+package Board;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

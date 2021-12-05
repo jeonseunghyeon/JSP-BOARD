@@ -1,4 +1,4 @@
-package sec.ex;
+package Board;
 
 public class BoardBean {
 

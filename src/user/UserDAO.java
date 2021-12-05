@@ -1,4 +1,4 @@
-package sec.ex;
+package user;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
