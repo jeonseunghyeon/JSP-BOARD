@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class BoardDAO {
 	
@@ -16,9 +17,7 @@ public class BoardDAO {
 			
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String ID = "root";
-
 			String Password = "2468";
-
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, ID, Password);
 			
@@ -27,7 +26,7 @@ public class BoardDAO {
 		}
 	}
 	
-	//占쌜쇽옙占쏙옙占쏙옙 占쌨소듸옙
+	//�ۼ����� �޼ҵ�
 	public String getDate() {
 		String sql = "select now()";
 		
@@ -40,11 +39,11 @@ public class BoardDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return ""; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
-
+		
+		return ""; //�����ͺ��̽� ����
 	}
 	
+	//�Խñ� ��ȣ �ο� �޼ҵ�
 	 public int getNext() {
 		 
 		 String sql = "select boardID from board order by boardID desc";
@@ -56,12 +55,11 @@ public class BoardDAO {
 			 if(rs.next()) {
 				 return rs.getInt(1)+1;
 			 }
-			 return 1; // 첫 占쏙옙째 占쌉시뱄옙占쏙옙 占쏙옙占�
+			 return 1; // ù ��° �Խù��� ���
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 return -1; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
-
+		 return -1; //�����ͺ��̽� ����
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
@@ -81,10 +79,52 @@ public class BoardDAO {
 		 }catch (Exception e) {
 			e.printStackTrace();
 		}
-		 return -1; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
-
+		 return -1; //�����ͺ��̽� ����
+	 }
+	 
+	 public ArrayList<BoardBean> getList(int pageNumber){
+		 String sql = "select * from board where boardID < ? and boardAvailable = 1 order by boardID desc limit 10";
+		 ArrayList<BoardBean> list = new ArrayList<BoardBean>();
+		 
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
+			 while(rs.next()) {
+				 BoardBean boardbean = new BoardBean();
+				 boardbean.setBoardID(rs.getInt(1));
+				 boardbean.setBoardTitle(rs.getString(2));
+				 boardbean.setUserID(rs.getString(3));
+				 boardbean.setBoardDate(rs.getString(4));
+				 boardbean.setBoardContent(rs.getString(5));
+				 boardbean.setBoardAvailable(rs.getInt(6));
+				 list.add(boardbean);
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}return list;
+		 
+	 }
+	 
+	 public boolean nextPage(int pageNumber) {
+		 String sql = "select * from board where boardID < ? and boardAvailable = 1";
+		 try {
+			 
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 return true;
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return false;
 	 }
 	
 	
 	
+
 }
+
