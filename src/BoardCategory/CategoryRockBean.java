@@ -2,6 +2,6 @@ package BoardCategory;
 
 import java.util.Date;
 
-public class CategoryKpopBean {
+public class CategoryRockBean {
 
 }

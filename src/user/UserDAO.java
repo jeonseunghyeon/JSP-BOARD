@@ -16,9 +16,11 @@ public class UserDAO {
 	public UserDAO() {
 		
 		try {
+
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
+
 			conn = DBConnection.getConnection();
 		} catch (Exception e) {
 			// TODO: handle exception

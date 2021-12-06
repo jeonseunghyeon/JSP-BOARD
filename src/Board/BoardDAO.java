@@ -16,12 +16,6 @@ public class BoardDAO {
 	public BoardDAO() {
 		
 		try {
-			
-		
-
-		
-	
-
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DBConnection.getConnection();
