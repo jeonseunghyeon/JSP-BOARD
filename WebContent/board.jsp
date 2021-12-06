@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "sec.ex.BoardDAO" %>
-    <%@ page import = "sec.ex.BoardBean" %>
+    <%@ page import = "Board.BoardDAO" %>
+    <%@ page import = "Board.BoardBean" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
@@ -11,26 +11,20 @@
 <!-- 화면 최적화 -->
 <meta name="viewport" content="width-device-width", initial-scale="1">
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
-
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
 <title>게시판</title>
 </head>
 <body>
-
 <%
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
-	
 	int pageNumber = 1;
-	
 	if(request.getParameter("pageNumber") != null){
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
-
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -52,9 +46,7 @@
 				<li><a href="main.jsp">메인</a></li>
 				<li><li class="active"><a href="board.jsp">게시판</a></li>
 			</ul>
-			
 			<%
-			
 				if(u_ID == null){
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 --> 
@@ -70,21 +62,18 @@
 					</ul>
 				</li>
 			</ul>
-			
 			<%
 				}else{
 			%>
-			
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">회원관리<span class="caret"></span></a>
-					<!-- 드랍다운 아이템 영역 --ㄴ>	
+					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
-						
 					</ul>
 				</li>
 			</ul>
@@ -93,8 +82,6 @@
 			%>
 		</div>
 	</nav>
-
-	
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -114,7 +101,6 @@
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
-					
 					<tr>
 					
 						<td><%=list.get(i).getBoardID() %> </td>
