@@ -16,7 +16,6 @@ public class UserDAO {
 	public UserDAO() {
 		
 		try {
-			
 			conn = DBConnection.getConnection();
 		} catch (Exception e) {
 			// TODO: handle exception
