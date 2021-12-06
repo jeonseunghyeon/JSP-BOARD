@@ -16,7 +16,11 @@ public class BoardDAO {
 			
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String ID = "root";
+<<<<<<< HEAD
 			String Password = "2468";
+=======
+			String Password = "chun3032";
+>>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, ID, Password);
 			
@@ -25,7 +29,7 @@ public class BoardDAO {
 		}
 	}
 	
-	//ÀÛ¼ºÀÏÀÚ ¸Þ¼Òµå
+	//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	public String getDate() {
 		String sql = "select now()";
 		
@@ -39,10 +43,10 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		
-		return ""; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return ""; //ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
-	//°Ô½Ã±Û ¹øÈ£ ºÎ¿© ¸Þ¼Òµå
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ ï¿½Î¿ï¿½ ï¿½Þ¼Òµï¿½
 	 public int getNext() {
 		 
 		 String sql = "select boardID from board order by boardID desc";
@@ -54,11 +58,11 @@ public class BoardDAO {
 			 if(rs.next()) {
 				 return rs.getInt(1)+1;
 			 }
-			 return 1; // Ã¹ ¹øÂ° °Ô½Ã¹°ÀÎ °æ¿ì
+			 return 1; // Ã¹ ï¿½ï¿½Â° ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 return -1; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		 return -1; //ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
@@ -78,7 +82,7 @@ public class BoardDAO {
 		 }catch (Exception e) {
 			e.printStackTrace();
 		}
-		 return -1; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		 return -1; //ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 }
 	
 	
