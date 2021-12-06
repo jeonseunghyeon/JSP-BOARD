@@ -14,13 +14,11 @@
 <title>게시판</title>
 </head>
 <body>
-
 <%
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
-
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -42,9 +40,7 @@
 				<li><a href="main.jsp">메인</a></li>
 				<li><li class="active"><a href="board.jsp">게시판</a></li>
 			</ul>
-			
 			<%
-			
 				if(u_ID == null){
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
@@ -60,11 +56,9 @@
 					</ul>
 				</li>
 			</ul>
-			
 			<%
 				}else{
 			%>
-			
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -74,7 +68,6 @@
 					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
-						
 					</ul>
 				</li>
 			</ul>
@@ -83,8 +76,6 @@
 			%>
 		</div>
 	</nav>
-
-	
 <!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -118,8 +109,4 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-
-
-
 </body>
