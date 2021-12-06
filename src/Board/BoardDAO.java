@@ -16,7 +16,9 @@ public class BoardDAO {
 			
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String ID = "root";
+
 			String Password = "2468";
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, ID, Password);
 			
@@ -38,11 +40,11 @@ public class BoardDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return ""; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
+
 	}
 	
-	//占쌉시깍옙 占쏙옙호 占싸울옙 占쌨소듸옙
 	 public int getNext() {
 		 
 		 String sql = "select boardID from board order by boardID desc";
@@ -59,6 +61,7 @@ public class BoardDAO {
 			 e.printStackTrace();
 		}
 		 return -1; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
+
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
@@ -79,6 +82,7 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		 return -1; //占쏙옙占쏙옙占싶븝옙占싱쏙옙 占쏙옙占쏙옙
+
 	 }
 	
 	

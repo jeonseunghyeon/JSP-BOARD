@@ -49,7 +49,7 @@
 			<%
 				if(u_ID == null){
 			%>
-			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
+			<!-- 헤더 우측에 나타나는 드랍다운 영역 --> 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
@@ -71,7 +71,7 @@
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">회원관리<span class="caret"></span></a>
-					<!-- 드랍다운 아이템 영역 -->	
+					<!-- 드랍다운 아이템 영역 --ㄴ>	
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
 					</ul>
