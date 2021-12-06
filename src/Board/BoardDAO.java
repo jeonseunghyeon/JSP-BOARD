@@ -17,7 +17,11 @@ public class BoardDAO {
 			
 			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
 			String ID = "root";
+<<<<<<< HEAD
+			String Password = "chun3032";
+=======
 			String Password = "2468";
+>>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, ID, Password);
 			
