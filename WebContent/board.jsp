@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "sec.ex.BoardDAO" %>
-    <%@ page import = "sec.ex.BoardBean" %>
+    <%@ page import = "Board.BoardDAO" %>
+    <%@ page import = "Board.BoardBean" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
