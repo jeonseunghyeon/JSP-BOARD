@@ -42,7 +42,7 @@ public class BoardDAO {
 		return ""; //�����ͺ��̽� ����
 	}
 	
-	//�Խñ� ��ȣ �ο� �޼ҵ�
+
 	 public int getNext() {
 		 
 		 String sql = "select boardID from board order by boardID desc";
@@ -54,11 +54,11 @@ public class BoardDAO {
 			 if(rs.next()) {
 				 return rs.getInt(1)+1;
 			 }
-			 return 1; // ù ��° �Խù��� ���
+			 return 1; 
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 return -1; //�����ͺ��̽� ����
+		 return -1;
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
@@ -78,7 +78,7 @@ public class BoardDAO {
 		 }catch (Exception e) {
 			e.printStackTrace();
 		}
-		 return -1; //�����ͺ��̽� ����
+		 return -1; 
 	 }
 	
 	
