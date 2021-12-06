@@ -17,21 +17,7 @@ public class UserDAO {
 		
 		try {
 			
-
-<<<<<<< HEAD
-			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
-			String id = "root";
-
-			String password ="chun3032";
-=======
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
-
-<<<<<<< HEAD
-
-
 			Class.forName("com.mysql.cj.jdbc.Driver");
-=======
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
 			
 			conn = DBConnection.getConnection();
 		} catch (Exception e) {

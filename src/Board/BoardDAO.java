@@ -17,21 +17,11 @@ public class BoardDAO {
 		
 		try {
 			
-			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
-			String ID = "root";
-<<<<<<< HEAD
+		
 
-			String Password = "chun3032";
+		
+	
 
-
-=======
-			String Password = "2468";
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(URL, ID, Password);
-//			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
-//			String ID = "root";
-//			String Password = "2468";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DBConnection.getConnection();
@@ -69,11 +59,11 @@ public class BoardDAO {
 			 if(rs.next()) {
 				 return rs.getInt(1)+1;
 			 }
-			 return 1; // ù ��° �Խù��� ���
+			 return 1; 
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 return -1; //�����ͺ��̽� ����
+		 return -1; 
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
