@@ -7,18 +7,18 @@ import java.sql.SQLException;
 
 public class DBConnection {
     public  static Connection getConnection() throws SQLException, NamingException, ClassNotFoundException {
-        Connection con = null;
-        String server = "jdbc:mysql://localhost:3306/jdbc";
-        String user_name = "root";
-        String password = "2468";
+        Connection conn = null;
+        String URL = "jdbc:mysql://localhost:3306/jsp_web_commu";
+        String ID = "root";
+        String Password = "2468";
 //        String password = ""; // 본인 패스워드
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(server, user_name, password);
+            conn = DriverManager.getConnection(URL, ID, Password);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return con;
+        return conn;
     }
 }

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import dbconnection.DBConnection;
+
 public class UserDAO {
 	
 	private Connection conn;
@@ -16,17 +18,9 @@ public class UserDAO {
 		try {
 			
 
-			String URL = "jdbc:mysql://localhost:3306/jsp_web_commu?useUnicode=true&characterEncoding=UTF-8";
-			String id = "root";
-<<<<<<< HEAD
-			String password ="chun3032";
 
-=======
-			String password ="2468";
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
-			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection(URL,id,password);
+			conn = DBConnection.getConnection();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
