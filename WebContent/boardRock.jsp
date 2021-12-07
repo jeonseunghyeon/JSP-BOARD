@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "BoardCategory.CategoryBalladeDAO" %>
-    <%@ page import = "BoardCategory.CategoryBalladeBean" %>
+    <%@ page import = "BoardCategory.CategoryRockDAO" %>
+    <%@ page import = "BoardCategory.CategoryRockBean" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
@@ -45,12 +45,12 @@
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="board.jsp">게시판</a></li>
-				<li class="active"><a href="boardBallade.jsp">발라드</a></li>
+				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEDM.jsp">EDM</a></li>
+				<li><a href="boardEdm.jsp">EDM</a></li>
 				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
 				<li><a href="boardPop.jsp">POP</a></li>
-				<li><a href="boardRock.jsp">ROCK</a></li>
+				<li class="active"><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
 				if(u_ID == null){
@@ -102,8 +102,8 @@
 				</thead>
 				<tbody>
 					<%
-						CategoryBalladeDAO CategoryBalladeDAO = new CategoryBalladeDAO();
-						ArrayList<CategoryBalladeBean> list= CategoryBalladeDAO.getList(pageNumber);
+						CategoryRockDAO CategoryBalladeDAO = new CategoryRockDAO();
+						ArrayList<CategoryRockBean> list= CategoryBalladeDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
@@ -129,7 +129,7 @@
 				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
-				}if(CategoryBalladeDAO.nextPage(pageNumber + 1)){
+				}if(CategoryRockDAO.nextPage(pageNumber + 1)){
 			%>
 				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
