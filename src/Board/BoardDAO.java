@@ -16,6 +16,7 @@ public class BoardDAO {
 	public BoardDAO() {
 		
 		try {
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DBConnection.getConnection();
 		}catch (Exception e) {
@@ -52,11 +53,11 @@ public class BoardDAO {
 			 if(rs.next()) {
 				 return rs.getInt(1)+1;
 			 }
-			 return 1; // ù ��° �Խù��� ���
+			 return 1; 
 		 }catch (Exception e) {
 			 e.printStackTrace();
 		}
-		 return -1; //�����ͺ��̽� ����
+		 return -1; 
 	 }
 	 
 	 public int write(String boardTitle, String u_ID, String boardContent) {
