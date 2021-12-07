@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "BoardCategory.CategoryHiphopDAO" %>
-    <%@ page import = "BoardCategory.CategoryHiphopBean" %>
+    <%@ page import = "BoardCategory.CategoryRockDAO" %>
+    <%@ page import = "BoardCategory.CategoryRockBean" %>
     <%@ page import = "java.util.ArrayList" %>
     <%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
@@ -49,17 +49,15 @@
 				<li><a href="boardDance.jsp">댄스</a></li>
 <<<<<<< HEAD
 				<li><a href="boardEdm.jsp">EDM</a></li>
-=======
-<<<<<<< HEAD
-				<li><a href="boardEdm.jsp">EDM</a></li>
-				<li><li class="active"><a href="boardHiphop.jsp">Hip Hop</a></li>
+				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
+				<li><a href="boardPop.jsp">POP</a></li>
+				<li><li class="active"><a href="boardRock.jsp">ROCK</a></li>
 =======
 				<li><a href="boardEDM.jsp">EDM</a></li>
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
-				<li class="active"><a href="boardHiphop.jsp">Hip Hop</a></li>
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
+				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
 				<li><a href="boardPop.jsp">POP</a></li>
-				<li><a href="boardRock.jsp">ROCK</a></li>
+				<li class="active"><a href="boardRock.jsp">ROCK</a></li>
+>>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
 			</ul>
 			<%
 			
@@ -69,7 +67,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
+						data-toggle="dropdown" role="button" aria-hasRockup="true"
 						aria-expanded="false">접속하기<span class="caret"></span></a>
 					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
@@ -85,7 +83,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
+						data-toggle="dropdown" role="button" aria-hasRockup="true"
 						aria-expanded="false">회원관리<span class="caret"></span></a>
 					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
@@ -112,19 +110,19 @@
 				</thead>
 				<tbody>
 					<%
-						CategoryHiphopDAO HiphopDAO= new CategoryHiphopDAO();
-						ArrayList<CategoryHiphopBean> list=  HiphopDAO.getList(pageNumber);
+						CategoryRockDAO RockDAO= new CategoryRockDAO();
+						ArrayList<CategoryRockBean> list=  RockDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
 					<tr>
 					
-						<td><%=list.get(i).getHiphopID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getHiphopID() %> ">
-							<%=list.get(i).getHiphopTitle() %></a></td>
+						<td><%=list.get(i).getRockID() %> </td>
+						<td><a href="view.jsp?boardID=<%= list.get(i).getRockID() %> ">
+							<%=list.get(i).getRockTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getHiphopDate().substring(0,11) + list.get(i).getHiphopDate().substring(11,13)+"시"+list.get(i).getHiphopDate().substring(14,16)+"분" %></td>
+						<td><%= list.get(i).getRockDate().substring(0,11) + list.get(i).getRockDate().substring(11,13)+"시"+list.get(i).getRockDate().substring(14,16)+"분" %></td>
 					</tr>
 					
 					<%
@@ -139,7 +137,7 @@
 				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
-				}if(HiphopDAO.nextPage(pageNumber + 1)){
+				}if(RockDAO.nextPage(pageNumber + 1)){
 			%>
 				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
@@ -162,8 +160,6 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-	
 
 
 
