@@ -44,12 +44,19 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="boardBallade.jsp">발라드</a></li>
+				<li><a href="boardDance.jsp">댄스</a></li>
+				<li><a href="boardEdm.jsp">EDM</a></li>
+				<li><a href="boardHipPop.jsp">Hip Hop</a></li>
+				<li><li class="active"><a href="boardPop.jsp">POP</a></li>
+				<li><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
+			
 				if(u_ID == null){
 			%>
-			<!-- 헤더 우측에 나타나는 드랍다운 영역 --> 
+			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
@@ -96,19 +103,19 @@
 				</thead>
 				<tbody>
 					<%
-						CategoryPopDAO CategoryBalladeDAO = new CategoryPopDAO();
-						ArrayList<CategoryPopBean> list= CategoryPopDAO.getList(pageNumber);
+						CategoryPopDAO PopDAO= new CategoryPopDAO();
+						ArrayList<CategoryPopBean> list=  PopDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
 					<tr>
 					
-						<td><%=list.get(i).getBoardID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getBoardID() %> ">
-							<%=list.get(i).getBoardTitle() %></a></td>
+						<td><%=list.get(i).getPopID() %> </td>
+						<td><a href="view.jsp?boardID=<%= list.get(i).getPopID() %> ">
+							<%=list.get(i).getPopTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getBoardDate().substring(0,11) + list.get(i).getBoardDate().substring(11,13)+"시"+list.get(i).getBoardDate().substring(14,16)+"분" %></td>
+						<td><%= list.get(i).getPopDate().substring(0,11) + list.get(i).getPopDate().substring(11,13)+"시"+list.get(i).getPopDate().substring(14,16)+"분" %></td>
 					</tr>
 					
 					<%
@@ -123,7 +130,7 @@
 				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
-				}if(CategoryPopDAO.nextPage(pageNumber + 1)){
+				}if(PopDAO.nextPage(pageNumber + 1)){
 			%>
 				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
@@ -146,6 +153,7 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	
 	
 
 
