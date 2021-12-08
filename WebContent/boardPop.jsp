@@ -89,6 +89,16 @@
 			%>
 		</div>
 	</nav>
+	
+	<!--  페이지 소개 영역 시작 -->
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>POP</h1>
+				<p>pop을 좋아하는 사람들의 페이지입니다.</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
