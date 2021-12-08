@@ -10,7 +10,7 @@ public class DBConnection {
         Connection conn = null;
         String URL = "jdbc:mysql://localhost:3306/jsp_web_commu";
         String ID = "root";
-        String Password = "chun3032"; // 본인 패스워드
+        String Password = ""; // 본인 패스워드
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
