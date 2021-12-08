@@ -47,19 +47,9 @@
 				<li><a href="board.jsp">게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
-<<<<<<< HEAD
-				<li><a href="boardEdm.jsp">EDM</a></li>
-=======
-<<<<<<< HEAD
 				<li><a href="boardEdm.jsp">EDM</a></li>
 				<li><a href="boardHipPop.jsp">Hip Hop</a></li>
 				<li><li class="active"><a href="boardPop.jsp">POP</a></li>
-=======
-				<li><a href="boardEDM.jsp">EDM</a></li>
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
-				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
-				<li class="active"><a href="boardPop.jsp">POP</a></li>
->>>>>>> branch 'master' of https://github.com/jeonseunghyeon/JSP-BOARD.git
 				<li><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
@@ -99,6 +89,16 @@
 			%>
 		</div>
 	</nav>
+	
+	<!--  페이지 소개 영역 시작 -->
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>POP</h1>
+				<p>pop을 좋아하는 사람들의 페이지입니다.</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">

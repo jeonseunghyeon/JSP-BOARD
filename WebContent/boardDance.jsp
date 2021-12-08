@@ -48,7 +48,6 @@
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><li class="active"><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
-				<li class="active"><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
 				<li><a href="boardPop.jsp">POP</a></li>
 				<li><a href="boardRock.jsp">ROCK</a></li>
@@ -90,6 +89,16 @@
 			%>
 		</div>
 	</nav>
+	
+	<!--  페이지 소개 영역 시작 -->
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>댄스</h1>
+				<p>댄스를 좋아하는 사람들의 페이지입니다.</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">

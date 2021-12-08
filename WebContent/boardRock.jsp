@@ -88,6 +88,16 @@
 			%>
 		</div>
 	</nav>
+	
+	<!--  페이지 소개 영역 시작 -->
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>락</h1>
+				<p>락을 좋아하는 사람들의 페이지입니다.</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -102,19 +112,19 @@
 				</thead>
 				<tbody>
 					<%
-						CategoryRockDAO CategoryBalladeDAO = new CategoryRockDAO();
-						ArrayList<CategoryRockBean> list= CategoryBalladeDAO.getList(pageNumber);
+						CategoryRockDAO RockDAO = new CategoryRockDAO();
+						ArrayList<CategoryRockBean> list= RockDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
 					<tr>
 					
-						<td><%=list.get(i).getBoardID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getBoardID() %> ">
-							<%=list.get(i).getBoardTitle() %></a></td>
+						<td><%=list.get(i).getRockID() %> </td>
+						<td><a href="view.jsp?RockID=<%= list.get(i).getRockID() %> ">
+							<%=list.get(i).getRockTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getBoardDate().substring(0,11) + list.get(i).getBoardDate().substring(11,13)+"시"+list.get(i).getBoardDate().substring(14,16)+"분" %></td>
+						<td><%= list.get(i).getRockDate().substring(0,11) + list.get(i).getRockDate().substring(11,13)+"시"+list.get(i).getRockDate().substring(14,16)+"분" %></td>
 					</tr>
 					
 					<%
@@ -126,12 +136,12 @@
 			<%
 				if(pageNumber != 1){
 			%>
-				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
+				<a href="Rock.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
-				}if(CategoryRockDAO.nextPage(pageNumber + 1)){
+				}if(RockDAO.nextPage(pageNumber + 1)){
 			%>
-				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
+				<a href="Rock.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
 			<%
 				}

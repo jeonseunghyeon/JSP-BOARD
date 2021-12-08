@@ -88,6 +88,16 @@
 			%>
 		</div>
 	</nav>
+	
+	<!--  페이지 소개 영역 시작 -->
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>발라드</h1>
+				<p>발라드를 좋아하는 사람들의 페이지입니다.</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -109,12 +119,12 @@
 					%>
 					<tr>
 					
-						<td><%=list.get(i).getBoardID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getBoardID() %> ">
-							<%=list.get(i).getBoardTitle() %></a></td>
+						<td><%=list.get(i).getBalladeID() %> </td>
+						<td><a href="view.jsp?boardID=<%= list.get(i).getBalladeID() %> ">
+							<%=list.get(i).getBalladeTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getBoardDate().substring(0,11) + list.get(i).getBoardDate().substring(11,13)+"시"+list.get(i).getBoardDate().substring(14,16)+"분" %></td>
+						<td><%= list.get(i).getBalladeDate().substring(0,11) + list.get(i).getBalladeDate().substring(11,13)+"시"+list.get(i).getBalladeDate().substring(14,16)+"분" %></td>
 					</tr>
 					
 					<%
