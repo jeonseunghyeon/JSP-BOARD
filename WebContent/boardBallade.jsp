@@ -45,7 +45,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="board.jsp">게시판</a></li>
-				<li><li class="active"><a href="boardBallade.jsp">발라드</a></li>
+				<li class="active"><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
 				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
@@ -53,14 +53,13 @@
 				<li><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
-			
 				if(u_ID == null){
 			%>
-			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
+			<!-- 헤더 우측에 나타나는 드랍다운 영역 --> 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-hasBalladeup="true"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">접속하기<span class="caret"></span></a>
 					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
@@ -76,7 +75,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-hasBalladeup="true"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">회원관리<span class="caret"></span></a>
 					<!-- 드랍다운 아이템 영역 -->	
 					<ul class="dropdown-menu">
@@ -103,8 +102,8 @@
 				</thead>
 				<tbody>
 					<%
-						CategoryBalladeDAO BalladeDAO= new CategoryBalladeDAO();
-						ArrayList<CategoryBalladeBean> list=  BalladeDAO.getList(pageNumber);
+						CategoryBalladeDAO CategoryBalladeDAO = new CategoryBalladeDAO();
+						ArrayList<CategoryBalladeBean> list= CategoryBalladeDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
@@ -130,7 +129,7 @@
 				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
-				}if(BalladeDAO.nextPage(pageNumber + 1)){
+				}if(CategoryBalladeDAO.nextPage(pageNumber + 1)){
 			%>
 				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
