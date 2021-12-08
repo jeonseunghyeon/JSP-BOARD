@@ -120,6 +120,36 @@ public class BoardDAO {
 		}
 		 return false;
 	 }
+	 
+	 public BoardBean getboard(int boardID) {
+		 
+		 String sql = "select * from board where boardID =?";
+		 
+		 try {
+			 
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, boardID);
+			 rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 BoardBean boardbean = new BoardBean();
+				 boardbean.setBoardID(rs.getInt(1));
+				 boardbean.setBoardTitle(rs.getString(2));
+				 boardbean.setUserID(rs.getString(3));
+				 boardbean.setBoardDate(rs.getString(4));
+				 boardbean.setBoardContent(rs.getString(5));
+				 boardbean.setBoardAvailable(rs.getInt(6));
+				 return boardbean;
+			 }
+			 
+		 }catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 
+		 
+		 return null;
+		 
+	 }
 	
 	
 	
