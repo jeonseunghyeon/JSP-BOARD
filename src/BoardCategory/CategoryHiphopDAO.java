@@ -120,4 +120,34 @@ public class CategoryHiphopDAO {
 			}
 			 return false;
 		 }
+		 
+		 public CategoryHiphopBean getHiphop(int HiphopID) {
+			 
+			 String sql = "select * from Hiphop where HiphopID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, HiphopID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryHiphopBean HiphopBean = new CategoryHiphopBean();
+					 HiphopBean.setHiphopID(rs.getInt(1));
+					 HiphopBean.setHiphopTitle(rs.getString(2));
+					 HiphopBean.setUserID(rs.getString(3));
+					 HiphopBean.setHiphopDate(rs.getString(4));
+					 HiphopBean.setHiphopContent(rs.getString(5));
+					 HiphopBean.setHiphopAvailable(rs.getInt(6));
+					 return HiphopBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
 }

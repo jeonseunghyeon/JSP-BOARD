@@ -122,6 +122,35 @@ public class CategoryBalladeDAO {
 			 return false;
 		 }
 		 
+		 public CategoryBalladeBean getBallade(int BalladeID) {
+			 
+			 String sql = "select * from ballade where BalladeID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, BalladeID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryBalladeBean BalladeBean = new CategoryBalladeBean();
+					 BalladeBean.setBalladeID(rs.getInt(1));
+					 BalladeBean.setBalladeTitle(rs.getString(2));
+					 BalladeBean.setUserID(rs.getString(3));
+					 BalladeBean.setBalladeDate(rs.getString(4));
+					 BalladeBean.setBalladeContent(rs.getString(5));
+					 BalladeBean.setBalladeAvailable(rs.getInt(6));
+					 return BalladeBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
 		 
 
 }
