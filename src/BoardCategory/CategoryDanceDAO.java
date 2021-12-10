@@ -120,5 +120,39 @@ public class CategoryDanceDAO {
 			}
 			 return false;
 		 }
+		 
+		 
+		 public CategoryDanceBean getDance(int DanceID) {
+			 
+			 String sql = "select * from dance where DanceID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, DanceID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryDanceBean DanceBean = new CategoryDanceBean();
+					 DanceBean.setDanceID(rs.getInt(1));
+					 DanceBean.setDanceTitle(rs.getString(2));
+					 DanceBean.setUserID(rs.getString(3));
+					 DanceBean.setDanceDate(rs.getString(4));
+					 DanceBean.setDanceContent(rs.getString(5));
+					 DanceBean.setDanceAvailable(rs.getInt(6));
+					 return DanceBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
+		 
+		 
+		 
 
 }

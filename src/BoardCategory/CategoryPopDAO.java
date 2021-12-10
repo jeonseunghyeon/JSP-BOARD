@@ -120,5 +120,36 @@ public class CategoryPopDAO {
 			}
 			 return false;
 		 }
+		 
+		 
+ public CategoryPopBean getPop(int PopID) {
+			 
+			 String sql = "select * from Pop where PopID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, PopID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryPopBean PopBean = new CategoryPopBean();
+					 PopBean.setPopID(rs.getInt(1));
+					 PopBean.setPopTitle(rs.getString(2));
+					 PopBean.setUserID(rs.getString(3));
+					 PopBean.setPopDate(rs.getString(4));
+					 PopBean.setPopContent(rs.getString(5));
+					 PopBean.setPopAvailable(rs.getInt(6));
+					 return PopBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
 
 }

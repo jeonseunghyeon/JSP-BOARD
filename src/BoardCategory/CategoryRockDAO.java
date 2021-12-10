@@ -120,5 +120,36 @@ public class CategoryRockDAO {
 			}
 			 return false;
 		 }
+		 
+		 
+ public CategoryRockBean getRock(int RockID) {
+			 
+			 String sql = "select * from Rock where RockID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, RockID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryRockBean RockBean = new CategoryRockBean();
+					 RockBean.setRockID(rs.getInt(1));
+					 RockBean.setRockTitle(rs.getString(2));
+					 RockBean.setUserID(rs.getString(3));
+					 RockBean.setRockDate(rs.getString(4));
+					 RockBean.setRockContent(rs.getString(5));
+					 RockBean.setRockAvailable(rs.getInt(6));
+					 return RockBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
 
 }
