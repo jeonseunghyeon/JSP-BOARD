@@ -1,5 +1,6 @@
-/build/
 
+
+/build/
+DBConnection.class
 WebContent/drivetest.jsp
 
-DBConnection.java
