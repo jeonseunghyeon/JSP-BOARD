@@ -13,7 +13,7 @@ public class DBConnection {
 
         String Password = "2468"; // 본인 패스워드
 
-
+      
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(URL, ID, Password);
