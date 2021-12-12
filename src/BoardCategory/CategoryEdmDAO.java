@@ -120,6 +120,36 @@ public class CategoryEdmDAO {
 			}
 			 return false;
 		 }
+		 
+public CategoryEdmBean getEdm(int EdmID) {
+			 
+			 String sql = "select * from edm where edmID =?";
+			 
+			 try {
+				 
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, EdmID);
+				 rs = pstmt.executeQuery();
+				 
+				 if(rs.next()) {
+					 CategoryEdmBean EdmBean = new CategoryEdmBean();
+					 EdmBean.setEdmID(rs.getInt(1));
+					 EdmBean.setEdmTitle(rs.getString(2));
+					 EdmBean.setUserID(rs.getString(3));
+					 EdmBean.setEdmDate(rs.getString(4));
+					 EdmBean.setEdmContent(rs.getString(5));
+					 EdmBean.setEdmAvailable(rs.getInt(6));
+					 return EdmBean;
+				 }
+				 
+			 }catch (Exception e) {
+				 e.printStackTrace();
+			 }
+			 
+			 
+			 return null;
+			 
+		 }
 
 
 }

@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "BoardCategory.CategoryBalladeDAO" %>
-    <%@ page import = "BoardCategory.CategoryBalladeBean" %>
-    <%@ page import = "java.util.ArrayList" %>
-    <%@ page import = "java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +7,10 @@
 <!-- 화면 최적화 -->
 <meta name="viewport" content="width-device-width", initial-scale="1">
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
+
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
+
 <title>게시판</title>
 </head>
 <body>
@@ -20,10 +18,6 @@
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
-	}
-	int pageNumber = 1;
-	if(request.getParameter("pageNumber") != null){
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
@@ -44,18 +38,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
-				<li class="active"><a href="boardBallade.jsp">발라드</a></li>
-				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEdm.jsp">EDM</a></li>
-				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
-				<li><a href="boardPop.jsp">POP</a></li>
-				<li><a href="boardRock.jsp">ROCK</a></li>
+				<li><li class="active"><a href="board.jsp">게시판</a></li>
 			</ul>
 			<%
 				if(u_ID == null){
 			%>
-			<!-- 헤더 우측에 나타나는 드랍다운 영역 --> 
+			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
@@ -88,72 +76,31 @@
 			%>
 		</div>
 	</nav>
-	
-	<!--  페이지 소개 영역 시작 -->
-	<div class="container">
-		<div class="jumbotron">
-			<div class="container">
-				<h1>발라드</h1>
-				<p>발라드를 좋아하는 사람들의 페이지입니다.</p>
-			</div>
-		</div>
-	</div>
-<!-- 게시판 메인 페이지 영역 시작 -->
+<!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						CategoryBalladeDAO CategoryBalladeDAO = new CategoryBalladeDAO();
-						ArrayList<CategoryBalladeBean> list= CategoryBalladeDAO.getList(pageNumber);
-						for(int i = 0; i < list.size(); i++){
-							
-					%>
-					<tr>
-					
-						<td><%=list.get(i).getBalladeID() %> </td>
-						<td><a href="Balladeview.jsp?BalladeID=<%= list.get(i).getBalladeID() %> ">
-							<%=list.get(i).getBalladeTitle() %></a></td>
-							
-						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getBalladeDate().substring(0,11) + list.get(i).getBalladeDate().substring(11,13)+"시"+list.get(i).getBalladeDate().substring(14,16)+"분" %></td>
-					</tr>
-					
-					<%
-						}
-					%>
-				</tbody>
-			</table>
-			
-			<%
-				if(pageNumber != 1){
-			%>
-				<a href="boardBallade.jsp?pageNumber=<%=pageNumber - 1 %>"
-					class="btn btn-success btn-arraw-left">이전</a>
-			<%
-				}if(CategoryBalladeDAO.nextPage(pageNumber + 1)){
-			%>
-				<a href="boardBallade?pageNumber=<%=pageNumber + 1 %>"
-					class="btn btn-success btn-arraw-left">다음</a>
-			<%
-				}
-			%>
-			<!-- 글쓰기 버튼 생성 -->
-			<a href="Balladewrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<form method="post" action="BalladewriteAction.jsp">
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="BalladeTitle" maxlength="50"></td>
+						</tr>
+						<tr>
+							<td><textarea class="form-control" placeholder="글 내용" name="BalladeContent" maxlength="2048" style="height: 350px;"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 글쓰기 버튼 생성 -->
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+			</form>
 		</div>
 	</div>
-	<!-- 게시판 메인 페이지 영역 끝 -->
-
-
-
+	<!-- 게시판 글쓰기 양식 영역 끝 -->
 
 
 
@@ -162,8 +109,4 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-
-
-
 </body>
