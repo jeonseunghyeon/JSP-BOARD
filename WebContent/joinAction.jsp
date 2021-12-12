@@ -23,23 +23,39 @@
 	
 	// 이미 로그인했으면 회원가입을 할 수 없게 한다
 	if(u_ID != null){
-		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인이 되어 있습니다')");
 		script.println("location.href='main.jsp'");
 		script.println("</script>");
-	}
-	
-	
-	if(user.getU_ID() == null || user.getU_Password() == null || user.getU_name() == null){
-		
+	}/* if(user.getU_ID() == null ||user.getU_Password() == null ||user.getU_name() == null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('입력이 안 된 부분이 있습니다')");
+		script.println("alert('필수사항을 입력해 주세요')");
+		script.println("history.back()");
+		script.println("</script>"); 
+	} else */ if(user.getU_ID() == null ){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('아이디를 입력해 주세요')");
 		script.println("history.back()");
 		script.println("</script>");
-	} else {
+		/* if(){
+			
+		} */
+	}else if(user.getU_Password() == null ){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('비밀번호를 입력해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+	}else if(user.getU_name() == null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('이름을 입력해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+	}else {
 		
 		UserDAO userdao = new UserDAO();
 		
