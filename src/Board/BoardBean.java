@@ -8,8 +8,14 @@ public class BoardBean {
 	String boardDate;
 	String boardContent;
 	int boardAvailable;
+	int boID;
 	
-	
+	public int getBoID() {
+		return boID;
+	}
+	public void setBoID(int boID) {
+		this.boID = boID;
+	}
 	public int getBoardAvailable() {
 		return boardAvailable;
 	}

@@ -25,6 +25,10 @@
 	if(request.getParameter("pageNumber") != null){
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
+	int boID = 0;
+	if (request.getParameter("boID") != null){
+		boID = Integer.parseInt(request.getParameter("boID"));
+	}
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -44,13 +48,14 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
-				<li><a href="boardBallade.jsp">발라드</a></li>
-				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEdm.jsp">EDM</a></li>
-				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
-				<li><a href="boardPop.jsp">POP</a></li>
-				<li><a href="boardRock.jsp">ROCK</a></li>
+				<% if (boID == 1){ %>
+					<li class="active"><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<%} else if(boID == 2){ %>
+					<li><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li class="active"><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<% } %>
+				
 			</ul>
 			<%
 				if(u_ID == null){
@@ -88,6 +93,19 @@
 			%>
 		</div>
 	</nav>
+	
+	<div class="container">
+	<%
+		if(boID == 1){
+	%>
+			<h1>음악평가<br></h1>
+			<p>음악평가입니다. <br><br></p>
+	<% }
+		else if(boID == 2){
+	%>
+			<h1>자유게시판<br></h1>
+			<p>자유롭게 글을 쓰는 곳입니다. 서로 존중하며 글과 댓글을 남깁시다.<br><br></p>
+	<% }%>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -103,15 +121,14 @@
 				<tbody>
 					<%
 						BoardDAO boardDAO = new BoardDAO();
-						ArrayList<BoardBean> list= boardDAO.getList(pageNumber);
+						ArrayList<BoardBean> list= boardDAO.getList(boID,pageNumber);
 						for(int i = 0; i < list.size(); i++){
 							
 					%>
 					<tr>
 					
 						<td><%=list.get(i).getBoardID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getBoardID() %> ">
-							<%=list.get(i).getBoardTitle() %></a></td>
+						<a href="view.jsp?boID=<%=boID%>&boID=<%= list.get(i).getBoID() %>"><%= list.get(i).getBoardTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>") %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
 						<td><%= list.get(i).getBoardDate().substring(0,11) + list.get(i).getBoardDate().substring(11,13)+"시"+list.get(i).getBoardDate().substring(14,16)+"분" %></td>
@@ -137,8 +154,9 @@
 				}
 			%>
 			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="write.jsp?boID=<%=boID %>" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
+	</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
 

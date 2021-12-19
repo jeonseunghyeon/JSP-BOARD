@@ -19,37 +19,37 @@
 </head>
 <body>
 <%
-
-	String realFolder="";
-	String saveFolder= "boardUpload";//사진을 저장할 경로
-	String encType = "utf-8";		//변환형식
-	int maxSize = 5*1024*1024;		//사진의 Size
-	
-	ServletContext context = this.getServletContext(); //절대경로를 얻는다
-	realFolder = context.getRealPath(saveFolder);		//saveFolder의 절대경로를 얻음
-	
-	MultipartRequest multi = null;
-	
-	//파일업로드를 직접적을 담당
-	multi = new MultipartRequest(request,realFolder,maxSize,encType,new DefaultFileRenamePolicy());
-	
-	//form으로 전달받은 3가지를 가져온다
-	String fileName = multi.getFilesystemName("fileName");
-	String boardTitle = multi.getParameter(" boardTitle");
-	String boardContent = multi.getParameter("boardContent");
-	
-	board.setBoardTitle(boardTitle);
-	board.setBoardContent(boardContent);
-	
-	if(fileName != null) {
-		File oldFile = new File(realFolder+"\\"+fileName);
-		File newFile = new File(realFolder+"\\"+(boardID-1)+"사진.jpg");
-	}
 		//현재 세션 상태를 체크한다
 	 String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
+	
+	int boID = 0;
+	if(request.getParameter("boID") != null){
+			boID = Integer.parseInt(request.getParameter("boardID"));
+	}
+	
+	String realFolder="";
+	String saveFolder = "bbsUpload";		//사진을 저장할 경로
+	String encType = "utf-8";				//변환형식
+	int maxSize=5*1024*1024;				//사진의 size
+	
+	
+	ServletContext context = this.getServletContext();		//절대경로를 얻는다
+	realFolder = context.getRealPath(saveFolder);			//saveFolder의 절대경로를 얻음
+			
+	
+	MultipartRequest multi = null;
+	
+	
+	multi = new MultipartRequest(request,realFolder,maxSize,encType,new DefaultFileRenamePolicy());
+	String fileName = multi.getFilesystemName("fileName");
+	String boardTitle = multi.getParameter("boardTitle");
+	String boardContent = multi.getParameter("boardContent");
+	board.setBoardTitle(boardTitle);
+	board.setBoardContent(boardContent);
+
 	
 	//로그인을 한 사람만 글을 쓸 수 있도록 코드를 수정한다
 	if(u_ID == null){
@@ -71,7 +71,7 @@
 		}else {
 			
 			BoardDAO boardDAO = new BoardDAO();
-			int result = boardDAO.write(board.getBoardTitle(), u_ID, board.getBoardContent());
+			int result = boardDAO.write(boID,board.getBoardTitle(), u_ID, board.getBoardContent());
 			
 			if(result == -1){
 				PrintWriter script = response.getWriter();
@@ -83,6 +83,11 @@
 			} else {
 				
 				PrintWriter script = response.getWriter();
+				if(fileName != null){
+					File oldFile = new File(realFolder+"\\"+fileName);
+					File newFile = new File(realFolder+"\\"+(result-1)+"사진.jpg");
+					oldFile.renameTo(newFile);
+				}
 				script.println("<script>");
 				script.println("alert('글쓰기에 성공')");
 				script.println("location.href='board.jsp'");

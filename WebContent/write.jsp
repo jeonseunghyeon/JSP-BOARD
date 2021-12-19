@@ -19,6 +19,11 @@
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
+	
+	int boID = 0;
+	if (request.getParameter("boID") != null){
+		boID = Integer.parseInt(request.getParameter("boID"));
+	}
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -38,7 +43,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
+					<% if (boID == 1){ %>
+					<li class="active"><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<%} else if(boID == 2){ %>
+					<li><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li class="active"><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<% } %>
 			</ul>
 			<%
 				if(u_ID == null){

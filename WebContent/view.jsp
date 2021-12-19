@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -29,6 +30,11 @@
 		boardID = Integer.parseInt(request.getParameter("boardID"));
 	}
 	
+	int boID = 0;
+	if (request.getParameter("boID") != null){
+		boID = Integer.parseInt(request.getParameter("boID"));
+	}
+	
 	if(boardID == 0){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -57,14 +63,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
-				<li><a href="board.jsp">게시판</a></li>
-				<li><a href="boardBallade.jsp">발라드</a></li>
-				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEdm.jsp">EDM</a></li>
-				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
-				<li><a href="boardPop.jsp">POP</a></li>
-				<li><a href="boardRock.jsp">ROCK</a></li>
+				<% if (boID == 1){ %>
+					<li class="active"><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<%} else if(boID == 2){ %>
+					<li><a href="board.jsp?boID=1">음악 평가</a></li>
+					<li class="active"><a href="board.jsp?boID=2">자유 게시판</a></li>
+				<% } %>
 			</ul>
 			<%
 				if(u_ID == null){
@@ -126,6 +131,16 @@
 						<td colspan="2"><%= boardbean.getBoardDate().substring(0, 11) + boardbean.getBoardDate().substring(11, 13) + "시"
 								+ boardbean.getBoardDate().substring(14, 16) + "분" %></td>
 					</tr>
+					
+					<% 	
+					String real = "C:\myJSP\asas\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jsp-board\boardUpload";
+					File viewFile = new File(real+"\\"+boardID+"사진.jpg");
+					if(viewFile.exists()){
+					%>
+					<tr>
+						<td colspan="6"><br><br><img src = "boardUpload/<%=boardID %>사진.jpg" border="300px" width="300px" height="300px"><br><br>
+					<% }
+					else {%><td colspan="6"><br><br><%} %>
 					<tr>
 						<td>내용</td>
 						<td colspan="2" style="height: 200px; text-align: left;"><%= boardbean.getBoardContent().replaceAll(" ", "&nbsp;")
