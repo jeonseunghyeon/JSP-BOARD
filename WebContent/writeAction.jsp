@@ -3,6 +3,10 @@
 <%@page import = "Board.BoardDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest"%>
     
     <jsp:useBean id="board" class="Board.BoardBean" scope ="page"/>
     <jsp:setProperty name="board" property="boardTitle"/>
@@ -16,6 +20,31 @@
 <body>
 <%
 
+	String realFolder="";
+	String saveFolder= "boardUpload";//사진을 저장할 경로
+	String encType = "utf-8";		//변환형식
+	int maxSize = 5*1024*1024;		//사진의 Size
+	
+	ServletContext context = this.getServletContext(); //절대경로를 얻는다
+	realFolder = context.getRealPath(saveFolder);		//saveFolder의 절대경로를 얻음
+	
+	MultipartRequest multi = null;
+	
+	//파일업로드를 직접적을 담당
+	multi = new MultipartRequest(request,realFolder,maxSize,encType,new DefaultFileRenamePolicy());
+	
+	//form으로 전달받은 3가지를 가져온다
+	String fileName = multi.getFilesystemName("fileName");
+	String boardTitle = multi.getParameter(" boardTitle");
+	String boardContent = multi.getParameter("boardContent");
+	
+	board.setBoardTitle(boardTitle);
+	board.setBoardContent(boardContent);
+	
+	if(fileName != null) {
+		File oldFile = new File(realFolder+"\\"+fileName);
+		File newFile = new File(realFolder+"\\"+(boardID-1)+"사진.jpg");
+	}
 		//현재 세션 상태를 체크한다
 	 String u_ID = null;
 	if(session.getAttribute("u_ID") != null){

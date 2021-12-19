@@ -11,7 +11,7 @@ public class DBConnection {
         String URL = "jdbc:mysql://localhost:3306/jsp_web_commu";
         String ID = "root";
 
-        String Password = "2468"; // 본인 패스워드
+        String Password = "chun3032"; // 본인 패스워드
 
       
         try {

@@ -79,7 +79,7 @@
 <!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="writeAction.jsp">
+			<form method="post" action="writeAction.jsp" encType = "multipart/form-data">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -92,6 +92,10 @@
 						</tr>
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용" name="boardContent" maxlength="2048" style="height: 350px;"></textarea></td>
+						</tr>
+						
+						<tr>
+							<td><input  type="file" name="fileName" ></td>
 						</tr>
 					</tbody>
 				</table>
