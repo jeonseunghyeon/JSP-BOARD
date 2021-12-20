@@ -95,7 +95,7 @@
 						</tr>
 						
 						<tr>
-							<td><input  type="file" name="fileName" ></td>
+							<td><input  type="file" name="file" ></td>
 						</tr>
 					</tbody>
 				</table>

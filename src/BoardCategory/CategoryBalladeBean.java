@@ -10,6 +10,7 @@ public class CategoryBalladeBean {
 	String BalladeDate;
 	String BalladeContent;
 	int BalladeAvailable;
+	
 	public int getBalladeID() {
 		return BalladeID;
 	}

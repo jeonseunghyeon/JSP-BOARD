@@ -1,3 +1,5 @@
+<%@page import="file.FileDAO"%>
+<%@page import="Board.BoardBean"%>
 <%@page import="user.UserDAO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import = "Board.BoardDAO" %>
@@ -19,12 +21,41 @@
 </head>
 <body>
 <%
+		
+	
 
 		//현재 세션 상태를 체크한다
 	 String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
+	
+	BoardDAO  boardDAO = new BoardDAO();
+	board.setBoardID(boardDAO.getNewNext());
+	int boardID = board.getBoardID();
+	String directory = application.getRealPath("/boardUpload/"+boardID+"/");
+	
+	File targetDir = new File(directory);
+	if(!targetDir.exists()){
+		targetDir.mkdirs();
+	}
+	
+	int maxSize = 1024*1024*500;
+	String encoding = "utf-8";
+	
+	MultipartRequest multipartRequest
+	= new MultipartRequest(request, directory, maxSize, encoding,
+					new DefaultFileRenamePolicy());
+	
+	String fileName = multipartRequest.getOriginalFileName("file");
+	String fileRealName = multipartRequest.getFilesystemName("file");
+	
+	String boardTitle = multipartRequest.getParameter("boardTitle");
+	String boardContent =  multipartRequest.getParameter("boardContent");
+	board.setBoardTitle(boardTitle);
+	board.setBoardContent(boardContent);
+		
+		
 	
 	//로그인을 한 사람만 글을 쓸 수 있도록 코드를 수정한다
 	if(u_ID == null){
@@ -37,6 +68,9 @@
 		
 	} else {
 		
+		
+		System.out.println("write action : check board parameter" + board.getBoardTitle());
+		
 		if(board.getBoardTitle() == null || board.getBoardContent() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -45,8 +79,10 @@
 			script.println("</script>");
 		}else {
 			
-			BoardDAO boardDAO = new BoardDAO();
+			System.out.println("getNewNext before boardDAO.write :" + board.getBoardID());
 			int result = boardDAO.write(board.getBoardTitle(), u_ID, board.getBoardContent());
+			
+			new FileDAO().upload(fileName,fileRealName,board.getBoardID());
 			
 			if(result == -1){
 				PrintWriter script = response.getWriter();
@@ -58,6 +94,8 @@
 			} else {
 				
 				PrintWriter script = response.getWriter();
+				
+				
 				script.println("<script>");
 				script.println("alert('글쓰기에 성공')");
 				script.println("location.href='board.jsp'");

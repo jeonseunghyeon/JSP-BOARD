@@ -66,7 +66,7 @@ public class BoardDAO {
 		 try {
 			 
 			 PreparedStatement pstmt = conn.prepareStatement(sql);
-			 pstmt.setInt(1, getNext());
+			 pstmt.setInt(1, getNewNext());
 			 pstmt.setString(2, boardTitle);
 			 pstmt.setString(3, u_ID);
 			 pstmt.setString(4, getDate());
@@ -151,6 +151,25 @@ public class BoardDAO {
 		 
 	 }
 	
+	 public int getNewNext() {
+		 String sql = "select boardID from board order by boardID desc";
+		 
+		 try {
+			 
+			 	PreparedStatement pstmt = conn.prepareStatement(sql);
+			 	rs = pstmt.executeQuery();
+			 	
+			 	if(rs.next()) {
+					return rs.getInt(1)+1;
+				}
+			 	
+			 	return 1;
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 return -1;
+	 }
 	
 	
 
