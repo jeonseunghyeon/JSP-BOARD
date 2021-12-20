@@ -120,7 +120,7 @@
 					<tr>
 					
 						<td><%=list.get(i).getBalladeID() %> </td>
-						<td><a href="Balladeview.jsp?BalladeID=<%= list.get(i).getBalladeID() %> ">
+						<td><a href="Balladeview.jsp?balladeID=<%= list.get(i).getBalladeID() %> ">
 							<%=list.get(i).getBalladeTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
