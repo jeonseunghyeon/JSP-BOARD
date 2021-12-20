@@ -37,7 +37,8 @@
 		script.println("</script>");
 	}
 	
-	CategoryBalladeBean Balladebean = new CategoryBalladeDAO().getBallade(balladeID);
+	CategoryBalladeBean balladeBean = new CategoryBalladeBean();
+	
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -57,7 +58,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">게시판</a></li>
+				<li><li class="active"><a href="boardBallade.jsp">발라드</a></li>
+				<li><a href="boardDance.jsp">댄스</a></li>
+				<li><a href="boardEdm.jsp">EDM</a></li>
+				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
+				<li><a href="boardPop.jsp">POP</a></li>
+				<li><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
 				if(u_ID == null){
@@ -108,20 +115,20 @@
 				<tbody>
 					<tr>
 						<td style="width: 20%;">글 제목</td>
-						<td colspan="2"><%= Balladebean.getBalladeTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+						<td colspan="2"><%=  balladeBean.getBalladeTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td colspan="2"><%=  Balladebean.getUserID() %></td>
+						<td colspan="2"><%=  balladeBean.getUserID() %></td>
 					</tr>
 					<tr>
 						<td>작성일자</td>
-						<td colspan="2"><%= Balladebean.getBalladeDate().substring(0, 11) + Balladebean.getBalladeDate().substring(11, 13) + "시"
-								+ Balladebean.getBalladeDate().substring(14, 16) + "분" %></td>
+						<td colspan="2"><%= balladeBean.getBalladeDate().substring(0, 11) + balladeBean.getBalladeDate().substring(11, 13) + "시"
+								+ balladeBean.getBalladeDate().substring(14, 16) + "분" %></td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td colspan="2" style="height: 200px; text-align: left;"><%= Balladebean.getBalladeContent().replaceAll(" ", "&nbsp;")
+						<td colspan="2" style="height: 200px; text-align: left;"><%= balladeBean.getBalladeContent().replaceAll(" ", "&nbsp;")
 							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 					</tr>
 				</tbody>
@@ -129,7 +136,7 @@
 				<a href="boardBallade.jsp" class="btn btn-primary">목록</a>
 				
 				<%
-					if(u_ID != null && u_ID.equals(Balladebean.getUserID())){
+					if(u_ID != null && u_ID.equals(balladeBean.getUserID())){
 						
 					
 				%>
