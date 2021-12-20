@@ -133,6 +133,22 @@
 						<td>내용</td>
 						<td colspan="2" style="height: 200px; text-align: left;"><%= boardbean.getBoardContent().replaceAll(" ", "&nbsp;")
 							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+							<td> <%
+									String directory = application.getRealPath("/upload/"+boardID+"/");
+									File targetDir = new File(directory);
+									if(!targetDir.exists()){
+										
+										targetDir.mkdirs();	}
+									
+									String files[] = new File(directory).list();	
+		
+									for(String file : files){
+										
+										out.write("<a href=\"" + request.getContextPath() + "/downloadAction?boardID="+boardID+"&file="+
+											java.net.URLEncoder.encode(file,"UTF-8") + "\">" + file + "</a><br>");
+												}
+								
+							%></td>
 					</tr>
 				</tbody>
 			</table>
