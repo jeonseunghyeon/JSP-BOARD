@@ -24,12 +24,12 @@
 		u_ID = (String)session.getAttribute("u_ID");
 	}
 	
-	int BalladeID =0;
-	if(request.getParameter("BalladeID") != null){
-		BalladeID = Integer.parseInt(request.getParameter("BalladeID"));
+	int balladeID =0;
+	if(request.getParameter("balladeID") != null){
+		balladeID = Integer.parseInt(request.getParameter("balladeID"));
 	}
 	
-	if(BalladeID == 0){
+	if(balladeID == 0){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('유효하지 않은 글입니다')");
@@ -37,7 +37,7 @@
 		script.println("</script>");
 	}
 	
-	CategoryBalladeBean Balladebean = new CategoryBalladeDAO().getBallade(BalladeID);
+	CategoryBalladeBean Balladebean = new CategoryBalladeDAO().getBallade(balladeID);
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -133,8 +133,8 @@
 						
 					
 				%>
-						<a href="update.jsp?BalladeID=<%=BalladeID %>" class="btn btn-primary">수정</a>
-						<a href="deleteAction.jsp?BalladeID=<%=BalladeID %>" class="btn btn-primary">삭제</a>
+						<a href="update.jsp?BalladeID=<%=balladeID %>" class="btn btn-primary">수정</a>
+						<a href="deleteAction.jsp?BalladeID=<%=balladeID %>" class="btn btn-primary">삭제</a>
 				
 				
 				<%

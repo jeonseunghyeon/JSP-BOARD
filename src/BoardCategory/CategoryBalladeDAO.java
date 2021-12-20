@@ -60,17 +60,17 @@ public class CategoryBalladeDAO {
 			 return -1; 
 		 }
 		 
-		 public int write(String BalladeTitle, String u_ID, String BalladeContent) {
+		 public int write(String balladeTitle, String u_ID, String balladeContent) {
 			 String sql = "insert into Ballade values(?,?,?,?,?,?)";
 			 
 			 try {
 				 
 				 PreparedStatement pstmt = conn.prepareStatement(sql);
 				 pstmt.setInt(1, getNext());
-				 pstmt.setString(2, BalladeTitle);
+				 pstmt.setString(2, balladeTitle);
 				 pstmt.setString(3, u_ID);
 				 pstmt.setString(4, getDate());
-				 pstmt.setString(5, BalladeContent);
+				 pstmt.setString(5, balladeContent);
 				 pstmt.setInt(6, 1);
 				 return pstmt.executeUpdate();
 				 

@@ -4,9 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <jsp:useBean id="Ballade" class="BoardCategory.CategoryBalladeBean" scope ="page"/>
-    <jsp:setProperty name="Ballade" property="BalladeTitle"/>
-    <jsp:setProperty name="Ballade" property="BalladeContent"/>
+    <jsp:useBean id="ballade" class="BoardCategory.CategoryBalladeBean" scope ="page"/>
+    <jsp:setProperty name="ballade" property="balladeTitle"/>
+    <jsp:setProperty name="ballade" property="balladeContent"/>
     
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@
 		
 	} else {
 		
-		if(Ballade.getBalladeTitle() == null || Ballade.getBalladeContent() == null) {
+		if(ballade.getBalladeTitle() == null || ballade.getBalladeContent() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다')");
@@ -43,7 +43,7 @@
 		}else {
 			
 			CategoryBalladeDAO BalladeDAO = new CategoryBalladeDAO();
-			int result = BalladeDAO.write(Ballade.getBalladeTitle(), u_ID, Ballade.getBalladeContent());
+			int result = BalladeDAO.write(ballade.getBalladeTitle(), u_ID, ballade.getBalladeContent());
 			
 			if(result == -1){
 				PrintWriter script = response.getWriter();

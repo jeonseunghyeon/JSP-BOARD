@@ -4,24 +4,24 @@ import java.util.Date;
 
 public class CategoryBalladeBean {
 	
-	int BalladeID;
-	String BalladeTitle;
+	int balladeID;
+	String balladeTitle;
 	String userID;
-	String BalladeDate;
-	String BalladeContent;
-	int BalladeAvailable;
+	String balladeDate;
+	String balladeContent;
+	int balladeAvailable;
 	
 	public int getBalladeID() {
-		return BalladeID;
+		return balladeID;
 	}
 	public void setBalladeID(int balladeID) {
-		BalladeID = balladeID;
+		this.balladeID = balladeID;
 	}
 	public String getBalladeTitle() {
-		return BalladeTitle;
+		return balladeTitle;
 	}
 	public void setBalladeTitle(String balladeTitle) {
-		BalladeTitle = balladeTitle;
+		this.balladeTitle = balladeTitle;
 	}
 	public String getUserID() {
 		return userID;
@@ -30,22 +30,24 @@ public class CategoryBalladeBean {
 		this.userID = userID;
 	}
 	public String getBalladeDate() {
-		return BalladeDate;
+		return balladeDate;
 	}
 	public void setBalladeDate(String balladeDate) {
-		BalladeDate = balladeDate;
+		this.balladeDate = balladeDate;
 	}
 	public String getBalladeContent() {
-		return BalladeContent;
+		return balladeContent;
 	}
 	public void setBalladeContent(String balladeContent) {
-		BalladeContent = balladeContent;
+		this.balladeContent = balladeContent;
 	}
 	public int getBalladeAvailable() {
-		return BalladeAvailable;
+		return balladeAvailable;
 	}
 	public void setBalladeAvailable(int balladeAvailable) {
-		BalladeAvailable = balladeAvailable;
+		this.balladeAvailable = balladeAvailable;
 	}
+	
+	
 
 }
