@@ -121,7 +121,7 @@
 					<tr>
 					
 						<td><%=list.get(i).getDanceID() %> </td>
-						<td><a href="view.jsp?boardID=<%= list.get(i).getDanceID() %> ">
+						<td><a href="Danceview.jsp?danceID=<%= list.get(i).getDanceID() %> ">
 							<%=list.get(i).getDanceTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
@@ -137,18 +137,18 @@
 			<%
 				if(pageNumber != 1){
 			%>
-				<a href="board.jsp?pageNumber=<%=pageNumber - 1 %>"
+				<a href="boardDance.jsp?pageNumber=<%=pageNumber - 1 %>"
 					class="btn btn-success btn-arraw-left">이전</a>
 			<%
 				}if(DanceDAO.nextPage(pageNumber + 1)){
 			%>
-				<a href="board.jsp?pageNumber=<%=pageNumber + 1 %>"
+				<a href="boardDance.jsp?pageNumber=<%=pageNumber + 1 %>"
 					class="btn btn-success btn-arraw-left">다음</a>
 			<%
 				}
 			%>
 			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="Dancewrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->

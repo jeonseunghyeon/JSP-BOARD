@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Board.BoardBean;
 import dbconnection.DBConnection;
 
 public class CategoryEdmDAO {
@@ -13,7 +14,7 @@ public class CategoryEdmDAO {
 	private ResultSet rs;
 	
 	
-	public CategoryEdmDAO() {
+public CategoryEdmDAO() {
 		
 		try {
 
@@ -24,132 +25,186 @@ public class CategoryEdmDAO {
 		}
 	}
 	
-
-		public String getDate() {
-			String sql = "select now()";
-			
-			try {
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					return rs.getString(1);
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
+	
+	public String getDate() {
+		String sql = "select now()";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
 			}
-			
-			return ""; 
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		 public int getNext() {
-			 
-			 String sql = "select EdmID from Edm order by EdmID desc";
-			 
-			 try {
-				 
-				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 rs = pstmt.executeQuery();
-				 if(rs.next()) {
-					 return rs.getInt(1)+1;
-				 }
-				 return 1; 
-			 }catch (Exception e) {
-				 e.printStackTrace();
-			}
-			 return -1; 
-		 }
+		return ""; 
+	}
+	
+	
+	 public int getNext() {
 		 
-		 public int write(String EdmTitle, String u_ID, String EdmContent) {
-			 String sql = "insert into Edm values(?,?,?,?,?,?)";
-			 
-			 try {
-				 
-				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, getNext());
-				 pstmt.setString(2, EdmTitle);
-				 pstmt.setString(3, u_ID);
-				 pstmt.setString(4, getDate());
-				 pstmt.setString(5, EdmContent);
-				 pstmt.setInt(6, 1);
-				 return pstmt.executeUpdate();
-				 
-			 }catch (Exception e) {
-				e.printStackTrace();
-			}
-			 return -1; 
-		 }
+		 String sql = "select edmID from edm order by edmID desc";
 		 
+		 try {
+			 
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 return rs.getInt(1)+1;
+			 }
+			 return 1; 
+		 }catch (Exception e) {
+			 e.printStackTrace();
+		}
+		 return -1; 
+	 }
+	 
+	 public int write(String edmTitle, String u_ID, String edmContent) {
+		 String sql = "insert into edm values(?,?,?,?,?,?)";
 		 
-		 public ArrayList<CategoryEdmBean> getList(int pageNumber){
-			 String sql = "select * from Edm where EdmID < ? and EdmAvailable = 1 order by EdmID desc limit 10";
-			 ArrayList<CategoryEdmBean> list = new ArrayList<CategoryEdmBean>();
+		 try {
 			 
-			 try {
-				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
-				 rs = pstmt.executeQuery();
-				 while(rs.next()) {
-					 CategoryEdmBean EdmBean = new CategoryEdmBean();
-					 EdmBean.setEdmID(rs.getInt(1));
-					 EdmBean.setEdmTitle(rs.getString(2));
-					 EdmBean.setUserID(rs.getString(3));
-					 EdmBean.setEdmDate(rs.getString(4));
-					 EdmBean.setEdmContent(rs.getString(5));
-					 EdmBean.setEdmAvailable(rs.getInt(6));
-					 list.add(EdmBean);
-				 }
-			 }catch (Exception e) {
-				e.printStackTrace();
-			}return list;
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNewNext());
+			 pstmt.setString(2, edmTitle);
+			 pstmt.setString(3, u_ID);
+			 pstmt.setString(4, getDate());
+			 pstmt.setString(5, edmContent);
+			 pstmt.setInt(6, 1);
+			 return pstmt.executeUpdate();
 			 
-		 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return -1; 
+	 }
+	 
+	 public ArrayList<CategoryEdmBean> getList(int pageNumber){
+		 String sql = "select * from edm where edmID < ? and edmAvailable = 1 order by edmID desc limit 10";
+		 ArrayList<CategoryEdmBean> list = new ArrayList<CategoryEdmBean>();
 		 
-		 public boolean nextPage(int pageNumber) {
-			 String sql = "select * from Edm where EdmID < ? and EdmAvailable = 1";
-			 try {
-				 
-				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
-				 rs = pstmt.executeQuery();
-				 
-				 if(rs.next()) {
-					 return true;
-				 }
-			 }catch (Exception e) {
-				e.printStackTrace();
-			}
-			 return false;
-		 }
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
+			 while(rs.next()) {
+				 CategoryEdmBean edmbean = new  CategoryEdmBean();
+				 edmbean.setEdmID(rs.getInt(1));
+				 edmbean.setEdmTitle(rs.getString(2));
+				 edmbean.setUserID(rs.getString(3));
+				 edmbean.setEdmDate(rs.getString(4));
+				 edmbean.setEdmContent(rs.getString(5));
+				 edmbean.setEdmAvailable(rs.getInt(6));
+				 list.add(edmbean);
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}return list;
 		 
-public CategoryEdmBean getEdm(int EdmID) {
+	 }
+	 
+	 public boolean nextPage(int pageNumber) {
+		 String sql = "select * from edm where edmID < ? and edmAvailable = 1";
+		 try {
 			 
-			 String sql = "select * from edm where edmID =?";
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			 rs = pstmt.executeQuery();
 			 
-			 try {
-				 
-				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, EdmID);
-				 rs = pstmt.executeQuery();
-				 
-				 if(rs.next()) {
-					 CategoryEdmBean EdmBean = new CategoryEdmBean();
-					 EdmBean.setEdmID(rs.getInt(1));
-					 EdmBean.setEdmTitle(rs.getString(2));
-					 EdmBean.setUserID(rs.getString(3));
-					 EdmBean.setEdmDate(rs.getString(4));
-					 EdmBean.setEdmContent(rs.getString(5));
-					 EdmBean.setEdmAvailable(rs.getInt(6));
-					 return EdmBean;
-				 }
-				 
-			 }catch (Exception e) {
-				 e.printStackTrace();
+			 if(rs.next()) {
+				 return true;
+			 }
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return false;
+	 }
+	 
+	 public CategoryEdmBean getEdm(int edmID) {
+		 
+		 String sql = "select * from edm where edmID =?";
+		 
+		 try {
+			 
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, edmID);
+			 rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 CategoryEdmBean edmbean = new  CategoryEdmBean();
+				 edmbean.setEdmID(rs.getInt(1));
+				 edmbean.setEdmTitle(rs.getString(2));
+				 edmbean.setUserID(rs.getString(3));
+				 edmbean.setEdmDate(rs.getString(4));
+				 edmbean.setEdmContent(rs.getString(5));
+				 edmbean.setEdmAvailable(rs.getInt(6));
+				 return edmbean;
 			 }
 			 
+		 }catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 
+		 
+		 return null;
+		 
+	 }
+	
+	 public int getNewNext() {
+		 String sql = "select edmID from edm order by edmID desc";
+		 
+		 try {
 			 
-			 return null;
+			 	PreparedStatement pstmt = conn.prepareStatement(sql);
+			 	rs = pstmt.executeQuery();
+			 	
+			 	if(rs.next()) {
+					return rs.getInt(1)+1;
+				}
+			 	
+			 	return 1;
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 return -1;
+	 }
+	 
+	 
+	 public int update(int edmID, String edmTitle, String edmContent) {
+		 String sql = "update edm set edmTitle =?, edmContent = ?, where edmID = ?";
+		 
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setString(1, edmTitle);
+			 pstmt.setString(2, edmContent);
+			 pstmt.setInt(3, edmID);
+			 return pstmt.executeUpdate();
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 return -1;
+	 }
+	 
+	 public int delete(int edmID) {
+		 
+		 String sql = "update edm set edmAvailable = 0 where edmID = ?";
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, edmID);
+			 return pstmt.executeUpdate();
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
 			 
 		 }
+		 
+		 return -1;
+	 }
+	
 
 
 }

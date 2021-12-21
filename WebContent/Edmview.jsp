@@ -1,5 +1,10 @@
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%@ page import="java.io.PrintWriter" %>
+ <%@ page import="BoardCategory.CategoryEdmDAO" %>
+  <%@ page import="BoardCategory.CategoryEdmBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +24,23 @@
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
+	
+	int edmID =0;
+	if(request.getParameter("edmID") != null){
+		edmID = Integer.parseInt(request.getParameter("edmID"));
+	}
+	
+	if(edmID == 0){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글입니다')");
+		script.println("location.href='boardEdm.jsp'");
+		script.println("</script>");
+	}
+	
+	
+	
+	CategoryEdmBean edmbean = new CategoryEdmDAO().getEdm(edmID);
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -38,10 +60,10 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEdm.jsp">EDM</a></li>
+				<li><li class="active"><a href="boardEdm.jsp">EDM</a></li>
 				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
 				<li><a href="boardPop.jsp">POP</a></li>
 				<li><a href="boardRock.jsp">ROCK</a></li>
@@ -82,31 +104,74 @@
 			%>
 		</div>
 	</nav>
-<!-- 게시판 글쓰기 양식 영역 시작 -->
+
+<!-- 게시판 글 보기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="writeAction.jsp" encType = "multipart/form-data">
-				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-					<thead>
-						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="text" class="form-control" placeholder="글 제목" name="boardTitle" maxlength="50"></td>
-						</tr>
-						<tr>
-							<td><textarea class="form-control" placeholder="글 내용" name="boardContent" maxlength="2048" style="height: 350px;"></textarea></td>
-						</tr>
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 20%;">글 제목</td>
+						<td colspan="2"><%= edmbean.getEdmTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td colspan="2"><%=  edmbean.getUserID() %></td>
+					</tr>
+					<tr>
+						<td>작성일자</td>
+						<td colspan="2"><%= edmbean.getEdmDate().substring(0, 11) + edmbean.getEdmDate().substring(11, 13) + "시"
+								+ edmbean.getEdmDate().substring(14, 16) + "분" %></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="2" style="height: 200px; text-align: left;"><%= edmbean.getEdmContent().replaceAll(" ", "&nbsp;")
+							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
+							
+								<%
+							String directory = application.getRealPath("/boardUpload/"+edmID+"/");
+							
+							File targetDir = new File(directory);
+								if(!targetDir.exists()){
+									targetDir.mkdirs();
+										}
+										
+								String files[] = new File(directory).list();	
+											
+								for(String file : files){
+												
+								out.write("<a href=\"" + request.getContextPath() + "/downloadAction?edmID="+edmID+"&file="+
+									java.net.URLEncoder.encode(file,"UTF-8") + "\">" + file + "</a><br>");
+										}
+							%>
+							
+							</td>
+							
 						
-						<tr>
-							<td><input  type="file" name="file" ></td>
-						</tr>
-					</tbody>
-				</table>
-				<!-- 글쓰기 버튼 생성 -->
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+						
+					</tr>
+				</tbody>
+			</table>
+				<a href="board.jsp" class="btn btn-primary">목록</a>
+				
+				<%
+					if(u_ID != null && u_ID.equals(edmbean.getUserID())){
+						
+					
+				%>
+						<a href="update.jsp?boardID=<%=edmID %>" class="btn btn-primary">수정</a>
+						<a href="deleteAction.jsp?boardID=<%=edmID %>" class="btn btn-primary">삭제</a>
+				
+				
+				<%
+					}
+				%>
+				
 			</form>
 		</div>
 	</div>

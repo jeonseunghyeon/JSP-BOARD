@@ -38,10 +38,10 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><li class="active"><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
-				<li><a href="boardEdm.jsp">EDM</a></li>
+				<li><li class="active"><a href="boardEdm.jsp">EDM</a></li>
 				<li><a href="boardHiphop.jsp">Hip Hop</a></li>
 				<li><a href="boardPop.jsp">POP</a></li>
 				<li><a href="boardRock.jsp">ROCK</a></li>
@@ -85,7 +85,7 @@
 <!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="writeAction.jsp" encType = "multipart/form-data">
+			<form method="post" action="EdmwriteAction.jsp" encType = "multipart/form-data">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -94,10 +94,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" class="form-control" placeholder="글 제목" name="boardTitle" maxlength="50"></td>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="edmTitle" maxlength="50"></td>
 						</tr>
 						<tr>
-							<td><textarea class="form-control" placeholder="글 내용" name="boardContent" maxlength="2048" style="height: 350px;"></textarea></td>
+							<td><textarea class="form-control" placeholder="글 내용" name="edmContent" maxlength="2048" style="height: 350px;"></textarea></td>
 						</tr>
 						
 						<tr>

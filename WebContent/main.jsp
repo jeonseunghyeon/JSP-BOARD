@@ -102,9 +102,9 @@
 				<h3>사이드 메뉴</h3>
 				<p>오늘의 아티스트!</p>
 				<ul class="list-group">
-					<li class="list-group-item list-group-item-action"><a href="#">헤이즈</a></li>
-					<li class="list-group-item list-group-item-action"><a href="#">기리보이</a></li>
-					<li class="list-group-item list-group-item-action"><a href="#">있지</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/%ED%97%A4%EC%9D%B4%EC%A6%88(%EA%B0%80%EC%88%98)">헤이즈</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4">기리보이</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/ITZY">ITZY</a></li>
 				</ul>
 			</div>
 			<!-- right content -->

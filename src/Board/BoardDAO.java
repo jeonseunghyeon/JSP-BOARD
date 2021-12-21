@@ -170,6 +170,39 @@ public class BoardDAO {
 		 }
 		 return -1;
 	 }
+	 
+	 
+	 public int update(int boardID, String boardTitle, String boardContent) {
+		 String sql = "update board set boardTitle =?, boardContent = ?, where boardID = ?";
+		 
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setString(1, boardTitle);
+			 pstmt.setString(2, boardContent);
+			 pstmt.setInt(3, boardID);
+			 return pstmt.executeUpdate();
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 return -1;
+	 }
+	 
+	 public int delete(int boardID) {
+		 
+		 String sql = "update board set boardAvailable = 0 where boardID = ?";
+		 try {
+			 PreparedStatement pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, boardID);
+			 return pstmt.executeUpdate();
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+			 
+		 }
+		 
+		 return -1;
+	 }
 	
 	
 

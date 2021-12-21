@@ -4,23 +4,25 @@ import java.util.Date;
 
 public class CategoryEdmBean {
 	
-	int EdmID;
-	String EdmTitle;
+	int edmID;
+	String edmTitle;
 	String userID;
-	String EdmDate;
-	String EdmContent;
-	int EdmAvailable;
+	String edmDate;
+	String edmContent;
+	int edmAvailable;
+	
+	
 	public int getEdmID() {
-		return EdmID;
+		return edmID;
 	}
 	public void setEdmID(int edmID) {
-		EdmID = edmID;
+		this.edmID = edmID;
 	}
 	public String getEdmTitle() {
-		return EdmTitle;
+		return edmTitle;
 	}
 	public void setEdmTitle(String edmTitle) {
-		EdmTitle = edmTitle;
+		this.edmTitle = edmTitle;
 	}
 	public String getUserID() {
 		return userID;
@@ -29,22 +31,24 @@ public class CategoryEdmBean {
 		this.userID = userID;
 	}
 	public String getEdmDate() {
-		return EdmDate;
+		return edmDate;
 	}
 	public void setEdmDate(String edmDate) {
-		EdmDate = edmDate;
+		this.edmDate = edmDate;
 	}
 	public String getEdmContent() {
-		return EdmContent;
+		return edmContent;
 	}
 	public void setEdmContent(String edmContent) {
-		EdmContent = edmContent;
+		this.edmContent = edmContent;
 	}
 	public int getEdmAvailable() {
-		return EdmAvailable;
+		return edmAvailable;
 	}
 	public void setEdmAvailable(int edmAvailable) {
-		EdmAvailable = edmAvailable;
+		this.edmAvailable = edmAvailable;
 	}
-
+	
+	
+	
 }
