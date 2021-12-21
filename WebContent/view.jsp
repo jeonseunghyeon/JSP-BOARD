@@ -146,7 +146,7 @@
 											
 								for(String file : files){
 												
-								out.write("<a href=\"" + request.getContextPath() + "/downloadAction?bbsID="+boardID+"&file="+
+								out.write("<a href=\"" + request.getContextPath() + "/downloadAction?boardID="+boardID+"&file="+
 									java.net.URLEncoder.encode(file,"UTF-8") + "\">" + file + "</a><br>");
 										}
 							%>
