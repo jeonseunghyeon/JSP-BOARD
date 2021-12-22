@@ -4,31 +4,25 @@ import java.util.Date;
 
 public class CategoryRockBean {
 
-	int RockID;
-	String RockTitle;
+	int rockID;
+	String rockTitle;
 	String userID;
-	String RockDate;
-	String RockContent;
-
-	int RockAvailable;
+	String rockDate;
+	String rockContent;
+	int rockAvailable;
 	
-	public String getRockDate() {
-		return RockDate;
-	}
-	public void setRockDate(String rockDate) {
-		RockDate = rockDate;
-	}
+	
 	public int getRockID() {
-		return RockID;
+		return rockID;
 	}
 	public void setRockID(int rockID) {
-		RockID = rockID;
+		this.rockID = rockID;
 	}
 	public String getRockTitle() {
-		return RockTitle;
+		return rockTitle;
 	}
 	public void setRockTitle(String rockTitle) {
-		RockTitle = rockTitle;
+		this.rockTitle = rockTitle;
 	}
 	public String getUserID() {
 		return userID;
@@ -36,17 +30,24 @@ public class CategoryRockBean {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-
+	public String getRockDate() {
+		return rockDate;
+	}
+	public void setRockDate(String rockDate) {
+		this.rockDate = rockDate;
+	}
 	public String getRockContent() {
-		return RockContent;
+		return rockContent;
 	}
 	public void setRockContent(String rockContent) {
-		RockContent = rockContent;
+		this.rockContent = rockContent;
 	}
 	public int getRockAvailable() {
-		return RockAvailable;
+		return rockAvailable;
 	}
 	public void setRockAvailable(int rockAvailable) {
-		RockAvailable = rockAvailable;
+		this.rockAvailable = rockAvailable;
 	}
+	
+	
 }

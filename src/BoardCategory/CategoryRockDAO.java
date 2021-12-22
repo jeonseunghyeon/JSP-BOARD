@@ -59,17 +59,17 @@ public class CategoryRockDAO {
 			 return -1; 
 		 }
 		 
-		 public int write(String RockTitle, String u_ID, String RockContent) {
+		 public int write(String rockTitle, String u_ID, String rockContent) {
 			 String sql = "insert into Rock values(?,?,?,?,?,?)";
 			 
 			 try {
 				 
 				 PreparedStatement pstmt = conn.prepareStatement(sql);
 				 pstmt.setInt(1, getNext());
-				 pstmt.setString(2, RockTitle);
+				 pstmt.setString(2, rockTitle);
 				 pstmt.setString(3, u_ID);
 				 pstmt.setString(4, getDate());
-				 pstmt.setString(5, RockContent);
+				 pstmt.setString(5, rockContent);
 				 pstmt.setInt(6, 1);
 				 return pstmt.executeUpdate();
 				 
@@ -122,14 +122,14 @@ public class CategoryRockDAO {
 		 }
 		 
 		 
- public CategoryRockBean getRock(int RockID) {
+ public CategoryRockBean getRock(int rockID) {
 			 
 			 String sql = "select * from Rock where RockID =?";
 			 
 			 try {
 				 
 				 PreparedStatement pstmt = conn.prepareStatement(sql);
-				 pstmt.setInt(1, RockID);
+				 pstmt.setInt(1, rockID);
 				 rs = pstmt.executeQuery();
 				 
 				 if(rs.next()) {
@@ -151,5 +151,59 @@ public class CategoryRockDAO {
 			 return null;
 			 
 		 }
+ 
+ 
+ public int getNewNext() {
+	 String sql = "select rockID from rock order by rockID desc";
+	 
+	 try {
+		 
+		 	PreparedStatement pstmt = conn.prepareStatement(sql);
+		 	rs = pstmt.executeQuery();
+		 	
+		 	if(rs.next()) {
+				return rs.getInt(1)+1;
+			}
+		 	
+		 	return 1;
+		 
+	 }catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	 return -1;
+ }
+ 
+ 
+ public int update(int rockID, String rockTitle, String rockContent) {
+	 String sql = "update rock set rockTitle =?, rockContent = ?, where rockID = ?";
+	 
+	 try {
+		 PreparedStatement pstmt = conn.prepareStatement(sql);
+		 pstmt.setString(1, rockTitle);
+		 pstmt.setString(2, rockContent);
+		 pstmt.setInt(3, rockID);
+		 return pstmt.executeUpdate();
+		 
+	 }catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	 return -1;
+ }
+ 
+ public int delete(int rockID) {
+	 
+	 String sql = "update rock set rockAvailable = 0 where rockID = ?";
+	 try {
+		 PreparedStatement pstmt = conn.prepareStatement(sql);
+		 pstmt.setInt(1,rockID);
+		 return pstmt.executeUpdate();
+		 
+	 }catch(Exception e) {
+		 e.printStackTrace();
+		 
+	 }
+	 
+	 return -1;
+ }
 
 }
