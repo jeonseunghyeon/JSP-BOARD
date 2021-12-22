@@ -10,7 +10,7 @@
 <!-- <link rel="stylesheet" href="css/Reset.css"> -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<link rel="stylesheet" href="css/style.css">
+
 
 <title>게시판</title>
 </head>
@@ -33,12 +33,12 @@
 				<span class="icon-bar"></span>
 			</button>
 			<!-- 상단 바에 제목이 나타나고 클릭하면 main 페이지로 이동한다 -->
-			<a id="header"class="navbar-brand" href="main.jsp"title="Music Player">Music Player</a>
+			<a class="navbar-brand" href="main.jsp"title="Music Player">Music Player</a>
 		</div>
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><li class="active"><a href="main.jsp">메인</a></li>
+				<li class="active"><a href="main.jsp">메인</a></li>
 				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>

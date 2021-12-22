@@ -44,7 +44,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 
@@ -107,10 +107,10 @@
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+						<th class="bg-primary" style="text-align: center;">번호</th>
+						<th class="bg-primary" style="text-align: center;">제목</th>
+						<th class="bg-primary" style="text-align: center;">작성자</th>
+						<th class="bg-primary" style="text-align: center;">작성일</th>
 					</tr>
 				</thead>
 				<tbody>

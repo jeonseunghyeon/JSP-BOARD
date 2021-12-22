@@ -60,7 +60,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 				<li><li class="active"><a href="boardEdm.jsp">EDM</a></li>
@@ -108,17 +108,13 @@
 <!-- 게시판 글 보기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<table class="table table" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+						<th class="bg-primary"colspan="2" style="text-align: center;"><%= edmbean.getEdmTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td style="width: 20%;">글 제목</td>
-						<td colspan="2"><%= edmbean.getEdmTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
-					</tr>
 					<tr>
 						<td>작성자</td>
 						<td colspan="2"><%=  edmbean.getUserID() %></td>
@@ -129,7 +125,6 @@
 								+ edmbean.getEdmDate().substring(14, 16) + "분" %></td>
 					</tr>
 					<tr>
-						<td>내용</td>
 						<td colspan="2" style="height: 200px; text-align: left;"><%= edmbean.getEdmContent().replaceAll(" ", "&nbsp;")
 							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
 							
@@ -139,8 +134,7 @@
 							File targetDir = new File(directory);
 								if(!targetDir.exists()){
 									targetDir.mkdirs();
-										}
-										
+										}	
 								String files[] = new File(directory).list();	
 											
 								for(String file : files){
@@ -148,38 +142,23 @@
 								out.write("<a href=\"" + request.getContextPath() + "/downloadAction?edmID="+edmID+"&file="+
 									java.net.URLEncoder.encode(file,"UTF-8") + "\">" + file + "</a><br>");
 										}
-							%>
-							
+							%>						
 							</td>
-							
-						
-						
 					</tr>
 				</tbody>
 			</table>
 				<a href="boardEdm.jsp" class="btn btn-primary">목록</a>
-				
 				<%
 					if(u_ID != null && u_ID.equals(edmbean.getUserID())){
-						
-					
 				%>
 						<a href="update.jsp?edmID=<%=edmID %>" class="btn btn-primary">수정</a>
 						<a href="deleteAction.jsp?edmID=<%=edmID %>" class="btn btn-primary">삭제</a>
-				
-				
 				<%
 					}
 				%>
-				
-			</form>
 		</div>
 	</div>
 	<!-- 게시판 글쓰기 양식 영역 끝 -->
-
-
-
-
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
