@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 
-<title>자유 자유 자유 게시판</title>
+<title>자유 게시판</title>
 </head>
 <body>
 <%
