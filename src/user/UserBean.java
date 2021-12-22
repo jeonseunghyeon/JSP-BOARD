@@ -1,10 +1,11 @@
 package user;
 
 public class UserBean {
-	
+
 
 	String u_ID;
 	String u_Password;
+	String u_Password2;
 	String u_name;
 	public String getU_ID() {
 		return u_ID;
@@ -18,6 +19,12 @@ public class UserBean {
 	public void setU_Password(String u_Password) {
 		this.u_Password = u_Password;
 	}
+	public String getU_Password2() {
+		return u_Password2;
+	}
+	public void setU_Password2(String u_Password2) {
+		this.u_Password2 = u_Password2;
+	}
 	public String getU_name() {
 		return u_name;
 	}
@@ -26,5 +33,4 @@ public class UserBean {
 	}
 	
 	
-
 }

@@ -57,23 +57,28 @@
 		<div class="row vertical-center-row">	<!-- 영역 크기 -->
 			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
 			<div class="text-center col-md-4 col-md-offset-4" style="padding-top: 20px;">
-				<form method="post" action="joinAction.jsp">
+				<form name="join"method="post" action="joinAction.jsp">
 					<h3 style="text-align: center;">회원가입 화면</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="u_ID" maxlength="20">
+						<input type="text" class="form-control" placeholder="아이디" name="u_ID" id="u_ID" maxlength="20">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="u_Password" maxlength="20">
+						<input type="password" class="form-control" placeholder="비밀번호" name="u_Password" id="u_Password" maxlength="20">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="이름" name="u_name" maxlength="20">
+						<input type="password" class="form-control" placeholder="비밀번호 확인" name="u_Password2" id="u_Password" maxlength="20">
 					</div>
-					<input type="submit" class="btn btn-primary form-control" value="회원가입">
-				</form>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="이름" name="u_name" id="u_name" maxlength="20">
+					</div>
+					<input type="submit" class="btn btn-primary form-control" onclick="check();"value="회원가입">
+				</form> 
 			</div>
 		</div>	
 	</div>
-	
+<script type="text/javascript">
+
+</script>
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
