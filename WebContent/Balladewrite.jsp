@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 
-<title>게시판</title>
+<title>자유 자유 자유 게시판</title>
 </head>
 <body>
 <%
@@ -34,11 +34,11 @@
 			<!-- 상단 바에 제목이 나타나고 클릭하면 main 페이지로 이동한다 -->
 			<a class="navbar-brand" href="main.jsp">Music Player</a>
 		</div>
-		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
+		<!-- 자유 자유 자유 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li class="active"><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
@@ -82,14 +82,14 @@
 			%>
 		</div>
 	</nav>
-<!-- 게시판 글쓰기 양식 영역 시작 -->
+<!-- 자유 자유 자유 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<form method="post" action="BalladewriteAction.jsp" accept-charset="euc-kr">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+							<th class="bg-primary"colspan="2" style="text-align: center;">글쓰기</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -108,7 +108,7 @@
 			</form>
 		</div>
 	</div>
-	<!-- 게시판 글쓰기 양식 영역 끝 -->
+	<!-- 자유 게시판 글쓰기 양식 영역 끝 -->
 
 
 
