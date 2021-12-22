@@ -44,7 +44,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
@@ -151,19 +151,8 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-
-
-
-
-
-
-
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-
-
-
 </body>

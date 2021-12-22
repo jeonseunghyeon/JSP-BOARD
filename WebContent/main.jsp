@@ -33,13 +33,13 @@
 				<span class="icon-bar"></span>
 			</button>
 			<!-- 상단 바에 제목이 나타나고 클릭하면 main 페이지로 이동한다 -->
-			<a id="header"class="navbar-brand" href="main.jsp">Music Player</a>
+			<a class="navbar-brand" href="main.jsp"title="Music Player">Music Player</a>
 		</div>
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><li class="active"><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
@@ -102,9 +102,9 @@
 				<h3>사이드 메뉴</h3>
 				<p>오늘의 아티스트!</p>
 				<ul class="list-group">
-					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/%ED%97%A4%EC%9D%B4%EC%A6%88(%EA%B0%80%EC%88%98)">헤이즈</a></li>
-					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/%EA%B8%B0%EB%A6%AC%EB%B3%B4%EC%9D%B4">기리보이</a></li>
-					<li class="list-group-item list-group-item-action"><a href="https://namu.wiki/w/ITZY">ITZY</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://www.melon.com/artist/timeline.htm?artistId=751611"title="클릭시 멜론 아티스트페이지로 이동합니다.">헤이즈</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://www.melon.com/artist/timeline.htm?artistId=585492"title="클릭시 멜론 아티스트페이지로 이동합니다.">기리보이</a></li>
+					<li class="list-group-item list-group-item-action"><a href="https://www.melon.com/artist/timeline.htm?artistId=2622030"title="클릭시 멜론 아티스트페이지로 이동합니다." >ITZY</a></li>
 				</ul>
 			</div>
 			<!-- right content -->

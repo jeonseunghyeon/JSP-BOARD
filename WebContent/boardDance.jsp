@@ -44,7 +44,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="board.jsp">게시판</a></li>
+				<li><a href="board.jsp">자유 게시판</a></li>
 				<li><a href="boardBallade.jsp">발라드</a></li>
 				<li><li class="active"><a href="boardDance.jsp">댄스</a></li>
 				<li><a href="boardEdm.jsp">EDM</a></li>
