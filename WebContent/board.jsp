@@ -88,6 +88,15 @@
 			%>
 		</div>
 	</nav>
+	
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>자유게시판</h1>
+				<p>자유롭게 토론하는 게시판입니다</p>
+			</div>
+		</div>
+	</div>
 <!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
