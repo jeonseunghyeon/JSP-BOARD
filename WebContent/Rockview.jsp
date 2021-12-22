@@ -15,10 +15,6 @@
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
-<title>게시판</title>
-</head>
-<body>
 <%
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
@@ -42,6 +38,10 @@
 	
 	CategoryRockBean rockbean = new CategoryRockDAO().getRock(rockID);
 %>
+<title><%= rockbean.getRockTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></title>
+</head>
+<body>
+
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->

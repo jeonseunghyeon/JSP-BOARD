@@ -14,10 +14,6 @@
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
-<title>게시판</title>
-</head>
-<body>
 <%
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
@@ -40,6 +36,10 @@
 	CategoryDanceBean dancebean = new CategoryDanceDAO().getDance(danceID);
 	
 %>
+<title><%= dancebean.getDanceTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></title>
+</head>
+<body>
+
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->

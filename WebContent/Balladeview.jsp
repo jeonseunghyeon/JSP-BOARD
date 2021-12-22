@@ -14,10 +14,6 @@
 
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-
-<title>게시판</title>
-</head>
-<body>
 <%
 	String u_ID = null;
 	if(session.getAttribute("u_ID") != null){
@@ -40,6 +36,10 @@
 	CategoryBalladeBean balladebean = new CategoryBalladeDAO().getBallade(balladeID);
 	
 %>
+<title><%= balladebean.getBalladeTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></title>
+</head>
+<body>
+
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->
@@ -102,7 +102,6 @@
 			%>
 		</div>
 	</nav>
-
 <!-- 게시판 글 보기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -129,29 +128,19 @@
 					</tr>
 				</tbody>
 			</table>
-				<a href="boardBallade.jsp" class="btn btn-primary">목록</a>
-				
+				<a href="boardBallade.jsp" class="btn btn-primary">목록</a>	
 				<%
 					if(u_ID != null && u_ID.equals(balladebean.getUserID())){
-						
-					
+
 				%>
 						<a href="update.jsp?BalladeID=<%=balladeID %>" class="btn btn-primary">수정</a>
 						<a href="deleteAction.jsp?BalladeID=<%=balladeID %>" class="btn btn-primary">삭제</a>
-				
-				
 				<%
 					}
 				%>
-				
-			</form>
 		</div>
 	</div>
 	<!-- 게시판 글쓰기 양식 영역 끝 -->
-
-
-
-
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>

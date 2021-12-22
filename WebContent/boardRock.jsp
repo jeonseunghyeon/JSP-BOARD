@@ -13,7 +13,7 @@
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>게시판</title>
+<title>Rock 게시판</title>
 </head>
 <body>
 <%

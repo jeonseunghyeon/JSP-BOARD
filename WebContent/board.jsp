@@ -13,7 +13,7 @@
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>게시판</title>
+<title>자유 게시판</title>
 </head>
 <body>
 <%
@@ -105,7 +105,6 @@
 						BoardDAO boardDAO = new BoardDAO();
 						ArrayList<BoardBean> list= boardDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
-						
 					%>
 					<tr>
 					
@@ -141,12 +140,6 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-
-
-
-
-
-
 
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

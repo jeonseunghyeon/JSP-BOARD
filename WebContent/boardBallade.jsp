@@ -13,7 +13,7 @@
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>게시판</title>
+<title>발라드 게시판</title>
 </head>
 <body>
 <%
@@ -88,7 +88,6 @@
 			%>
 		</div>
 	</nav>
-	
 	<!--  페이지 소개 영역 시작 -->
 	<div class="container">
 		<div class="jumbotron">
@@ -114,11 +113,9 @@
 					<%
 						CategoryBalladeDAO CategoryBalladeDAO = new CategoryBalladeDAO();
 						ArrayList<CategoryBalladeBean> list= CategoryBalladeDAO.getList(pageNumber);
-						for(int i = 0; i < list.size(); i++){
-							
+						for(int i = 0; i < list.size(); i++){		
 					%>
 					<tr>
-					
 						<td><%=list.get(i).getBalladeID() %> </td>
 						<td><a href="Balladeview.jsp?balladeID=<%= list.get(i).getBalladeID() %> ">
 							<%=list.get(i).getBalladeTitle() %></a></td>
@@ -126,13 +123,11 @@
 						<td><%= list.get(i).getUserID() %></td>
 						<td><%= list.get(i).getBalladeDate().substring(0,11) + list.get(i).getBalladeDate().substring(11,13)+"시"+list.get(i).getBalladeDate().substring(14,16)+"분" %></td>
 					</tr>
-					
 					<%
 						}
 					%>
 				</tbody>
 			</table>
-			
 			<%
 				if(pageNumber != 1){
 			%>
@@ -151,19 +146,8 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-
-
-
-
-
-
-
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-
-
-
 </body>

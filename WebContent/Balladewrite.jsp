@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
 
-<title>자유 자유 자유 게시판</title>
+<title>글쓰기-Ballade게시판</title>
 </head>
 <body>
 <%
@@ -82,7 +82,7 @@
 			%>
 		</div>
 	</nav>
-<!-- 자유 자유 자유 게시판 글쓰기 양식 영역 시작 -->
+<!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<form method="post" action="BalladewriteAction.jsp">
@@ -106,7 +106,7 @@
 			</form>
 		</div>
 	</div>
-	<!-- 자유 게시판 글쓰기 양식 영역 끝 -->
+	<!-- 게시판 글쓰기 양식 영역 끝 -->
 
 
 
