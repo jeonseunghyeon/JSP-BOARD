@@ -28,21 +28,12 @@
 		script.println("alert('이미 로그인이 되어 있습니다')");
 		script.println("location.href='main.jsp'");
 		script.println("</script>");
-	}/* if(user.getU_ID() == null ||user.getU_Password() == null ||user.getU_name() == null){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('필수사항을 입력해 주세요')");
-		script.println("history.back()");
-		script.println("</script>"); 
-	} else */ if(user.getU_ID() == null ){
+	} if(user.getU_ID() == null ){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('아이디를 입력해 주세요')");
 		script.println("history.back()");
 		script.println("</script>");
-		/* if(){
-			
-		} */
 	}else if(user.getU_Password() == null ){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

@@ -105,7 +105,7 @@
 						BoardDAO boardDAO = new BoardDAO();
 						ArrayList<BoardBean> list= boardDAO.getList(pageNumber);
 						for(int i = 0; i < list.size(); i++){
-							
+						
 					%>
 					<tr>
 					
