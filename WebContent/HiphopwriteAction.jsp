@@ -1,8 +1,8 @@
 <%@page import="file.FileDAO"%>
-<%@page import="BoardCategory.CategoryEdmBean"%>
+<%@page import="BoardCategory.CategoryHiphopBean"%>
 <%@page import="user.UserDAO"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import = "BoardCategory.CategoryEdmDAO" %>
+<%@page import = "BoardCategory.CategoryHiphopDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.File" %>
@@ -10,9 +10,9 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="com.oreilly.servlet.MultipartRequest"%>
     
-    <jsp:useBean id="edm" class="BoardCategory.CategoryEdmBean" scope ="page"/>
-    <jsp:setProperty name="edm" property="edmTitle"/>
-    <jsp:setProperty name="edm" property="edmContent"/>
+    <jsp:useBean id="hiphop" class="BoardCategory.CategoryHiphopBean" scope ="page"/>
+    <jsp:setProperty name="hiphop" property="hiphopTitle"/>
+    <jsp:setProperty name="hiphop" property="hiphopContent"/>
     
 <!DOCTYPE html>
 <html>
@@ -30,10 +30,10 @@
 		u_ID = (String)session.getAttribute("u_ID");
 	}
 	
-	CategoryEdmDAO edmDAO = new CategoryEdmDAO();
-	edm.setEdmID(edmDAO.getNewNext());
-	int edmID = edm.getEdmID();
-	String directory = application.getRealPath("/boardUpload/"+edmID+"/");
+	CategoryHiphopDAO hiphopDAO = new CategoryHiphopDAO();
+	hiphop.setHiphopID(hiphopDAO.getNewNext());
+	int hiphopID = hiphop.getHiphopID();
+	String directory = application.getRealPath("/boardUpload/"+hiphopID+"/");
 	
 	File targetDir = new File(directory);
 	if(!targetDir.exists()){
@@ -50,10 +50,10 @@
 	String fileName = multipartRequest.getOriginalFileName("file");
 	String fileRealName = multipartRequest.getFilesystemName("file");
 	
-	String edmTitle = multipartRequest.getParameter("edmTitle");
-	String edmContent =  multipartRequest.getParameter("edmContent");
-	edm.setEdmTitle(edmTitle);
-	edm.setEdmContent(edmContent);
+	String hiphopTitle = multipartRequest.getParameter("hiphopTitle");
+	String hiphopContent =  multipartRequest.getParameter("hiphopContent");
+	hiphop.setHiphopTitle(hiphopTitle);
+	hiphop.setHiphopContent(hiphopContent);
 		
 		
 	
@@ -69,9 +69,9 @@
 	} else {
 		
 		
-		System.out.println("write action : check board parameter" + edm.getEdmTitle());
+		System.out.println("write action : check board parameter" + hiphop.getHiphopTitle());
 		
-		if(edm.getEdmTitle() == null || edm.getEdmContent() == null) {
+		if(hiphop.getHiphopTitle() == null || hiphop.getHiphopContent() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다')");
@@ -79,10 +79,10 @@
 			script.println("</script>");
 		}else {
 			
-			System.out.println("getNewNext before edmDAO.write :" + edm.getEdmID());
-			int result = edmDAO.write(edm.getEdmTitle(), u_ID, edm.getEdmContent());
+			System.out.println("getNewNext before hiphopDAO.write :" + hiphop.getHiphopID());
+			int result = hiphopDAO.write(hiphop.getHiphopTitle(), u_ID, hiphop.getHiphopContent());
 			
-			new FileDAO().upload(fileName,fileRealName,edm .getEdmID());
+			new FileDAO().upload(fileName,fileRealName,hiphop .getHiphopID());
 			
 			if(result == -1){
 				PrintWriter script = response.getWriter();
@@ -98,7 +98,7 @@
 				
 				script.println("<script>");
 				script.println("alert('글쓰기에 성공')");
-				script.println("location.href='boardEdm.jsp'");
+				script.println("location.href='boardHiphop.jsp'");
 				script.println("</script>");
 			}
 		}

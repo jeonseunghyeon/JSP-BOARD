@@ -157,15 +157,15 @@
 					</tr>
 				</tbody>
 			</table>
-				<a href="board.jsp" class="btn btn-primary">목록</a>
+				<a href="boardEdm.jsp" class="btn btn-primary">목록</a>
 				
 				<%
 					if(u_ID != null && u_ID.equals(edmbean.getUserID())){
 						
 					
 				%>
-						<a href="update.jsp?boardID=<%=edmID %>" class="btn btn-primary">수정</a>
-						<a href="deleteAction.jsp?boardID=<%=edmID %>" class="btn btn-primary">삭제</a>
+						<a href="update.jsp?edmID=<%=edmID %>" class="btn btn-primary">수정</a>
+						<a href="deleteAction.jsp?edmID=<%=edmID %>" class="btn btn-primary">삭제</a>
 				
 				
 				<%

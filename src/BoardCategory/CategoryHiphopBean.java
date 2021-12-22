@@ -4,23 +4,26 @@ import java.util.Date;
 
 public class CategoryHiphopBean {
 	
-	int HiphopID;
-	String HiphopTitle;
+	int hiphopID;
+	String hiphopTitle;
 	String userID;
-	String HiphopDate;
-	String HiphopContent;
-	int HiphopAvailable;
+	String hiphopDate;
+	String hiphopContent;
+	int hiphopAvailable;
+	
+	
+	
 	public int getHiphopID() {
-		return HiphopID;
+		return hiphopID;
 	}
 	public void setHiphopID(int hiphopID) {
-		HiphopID = hiphopID;
+		this.hiphopID = hiphopID;
 	}
 	public String getHiphopTitle() {
-		return HiphopTitle;
+		return hiphopTitle;
 	}
 	public void setHiphopTitle(String hiphopTitle) {
-		HiphopTitle = hiphopTitle;
+		this.hiphopTitle = hiphopTitle;
 	}
 	public String getUserID() {
 		return userID;
@@ -29,22 +32,23 @@ public class CategoryHiphopBean {
 		this.userID = userID;
 	}
 	public String getHiphopDate() {
-		return HiphopDate;
+		return hiphopDate;
 	}
 	public void setHiphopDate(String hiphopDate) {
-		HiphopDate = hiphopDate;
+		this.hiphopDate = hiphopDate;
 	}
 	public String getHiphopContent() {
-		return HiphopContent;
+		return hiphopContent;
 	}
 	public void setHiphopContent(String hiphopContent) {
-		HiphopContent = hiphopContent;
+		this.hiphopContent = hiphopContent;
 	}
 	public int getHiphopAvailable() {
-		return HiphopAvailable;
+		return hiphopAvailable;
 	}
 	public void setHiphopAvailable(int hiphopAvailable) {
-		HiphopAvailable = hiphopAvailable;
+		this.hiphopAvailable = hiphopAvailable;
 	}
+	
 
 }
