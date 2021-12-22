@@ -4,31 +4,23 @@ import java.util.Date;
 
 public class CategoryPopBean {
 
-	int PopID;
-	String PopTitle;
+	int popID;
+	String popTitle;
 	String userID;
-	String PopDate;
-	
-	String PopContent;
-	int PopAvailable;
-	
-	public String getPopDate() {
-		return PopDate;
-	}
-	public void setPopDate(String popDate) {
-		PopDate = popDate;
-	}
+	String popDate;
+	String popContent;
+	int popAvailable;
 	public int getPopID() {
-		return PopID;
+		return popID;
 	}
 	public void setPopID(int popID) {
-		PopID = popID;
+		this.popID = popID;
 	}
 	public String getPopTitle() {
-		return PopTitle;
+		return popTitle;
 	}
 	public void setPopTitle(String popTitle) {
-		PopTitle = popTitle;
+		this.popTitle = popTitle;
 	}
 	public String getUserID() {
 		return userID;
@@ -36,17 +28,25 @@ public class CategoryPopBean {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	
+	public String getPopDate() {
+		return popDate;
+	}
+	public void setPopDate(String popDate) {
+		this.popDate = popDate;
+	}
 	public String getPopContent() {
-		return PopContent;
+		return popContent;
 	}
 	public void setPopContent(String popContent) {
-		PopContent = popContent;
+		this.popContent = popContent;
 	}
 	public int getPopAvailable() {
-		return PopAvailable;
+		return popAvailable;
 	}
 	public void setPopAvailable(int popAvailable) {
-		PopAvailable = popAvailable;
+		this.popAvailable = popAvailable;
 	}
+	
+	
+	
 }

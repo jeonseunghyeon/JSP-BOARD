@@ -1,9 +1,10 @@
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import = "BoardCategory.CategoryPopDAO" %>
-    <%@ page import = "BoardCategory.CategoryPopBean" %>
-    <%@ page import = "java.util.ArrayList" %>
-    <%@ page import = "java.io.PrintWriter" %>
+    
+ <%@ page import="java.io.PrintWriter" %>
+ <%@ page import="BoardCategory.CategoryPopDAO" %>
+  <%@ page import="BoardCategory.CategoryPopBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,10 @@
 <!-- 화면 최적화 -->
 <meta name="viewport" content="width-device-width", initial-scale="1">
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
+
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
+
 <title>게시판</title>
 </head>
 <body>
@@ -21,10 +24,23 @@
 	if(session.getAttribute("u_ID") != null){
 		u_ID = (String)session.getAttribute("u_ID");
 	}
-	int pageNumber = 1;
-	if(request.getParameter("pageNumber") != null){
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	
+	int popID =0;
+	if(request.getParameter("popID") != null){
+		popID = Integer.parseInt(request.getParameter("popID"));
 	}
+	
+	if(popID == 0){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글입니다')");
+		script.println("location.href='boardPop.jsp'");
+		script.println("</script>");
+	}
+	
+	
+	
+	CategoryPopBean popbean = new CategoryPopDAO().getPop(popID);
 %>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
 		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
@@ -53,7 +69,6 @@
 				<li><a href="boardRock.jsp">ROCK</a></li>
 			</ul>
 			<%
-			
 				if(u_ID == null){
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
@@ -89,72 +104,78 @@
 			%>
 		</div>
 	</nav>
-	
-	<!--  페이지 소개 영역 시작 -->
-	<div class="container">
-		<div class="jumbotron">
-			<div class="container">
-				<h1>POP</h1>
-				<p>pop을 좋아하는 사람들의 페이지입니다.</p>
-			</div>
-		</div>
-	</div>
-<!-- 게시판 메인 페이지 영역 시작 -->
+
+<!-- 게시판 글 보기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						CategoryPopDAO PopDAO= new CategoryPopDAO();
-						ArrayList<CategoryPopBean> list=  PopDAO.getList(pageNumber);
-						for(int i = 0; i < list.size(); i++){
-							
-					%>
 					<tr>
-					
-						<td><%=list.get(i).getPopID() %> </td>
-						<td><a href="Popview.jsp?popID=<%= list.get(i).getPopID() %> ">
-							<%=list.get(i).getPopTitle() %></a></td>
-							
-						<td><%= list.get(i).getUserID() %></td>
-						<td><%= list.get(i).getPopDate().substring(0,11) + list.get(i).getPopDate().substring(11,13)+"시"+list.get(i).getPopDate().substring(14,16)+"분" %></td>
+						<td style="width: 20%;">글 제목</td>
+						<td colspan="2"><%= popbean.getPopTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 					</tr>
-					
-					<%
-						}
-					%>
+					<tr>
+						<td>작성자</td>
+						<td colspan="2"><%=  popbean.getUserID() %></td>
+					</tr>
+					<tr>
+						<td>작성일자</td>
+						<td colspan="2"><%= popbean.getPopDate().substring(0, 11) + popbean.getPopDate().substring(11, 13) + "시"
+								+ popbean.getPopDate().substring(14, 16) + "분" %></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="2" style="height: 200px; text-align: left;"><%= popbean.getPopContent().replaceAll(" ", "&nbsp;")
+							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
+							
+								<%
+							String directory = application.getRealPath("/boardUpload/"+popID+"/");
+							
+							File targetDir = new File(directory);
+								if(!targetDir.exists()){
+									targetDir.mkdirs();
+										}
+										
+								String files[] = new File(directory).list();	
+											
+								for(String file : files){
+												
+								out.write("<a href=\"" + request.getContextPath() + "/downloadAction?popID="+popID+"&file="+
+									java.net.URLEncoder.encode(file,"UTF-8") + "\">" + file + "</a><br>");
+										}
+							%>
+							
+							</td>
+							
+						
+						
+					</tr>
 				</tbody>
 			</table>
-			
-			<%
-				if(pageNumber != 1){
-			%>
-				<a href="boardPop.jsp?pageNumber=<%=pageNumber - 1 %>"
-					class="btn btn-success btn-arraw-left">이전</a>
-			<%
-				}if(PopDAO.nextPage(pageNumber + 1)){
-			%>
-				<a href="boardPop.jsp?pageNumber=<%=pageNumber + 1 %>"
-					class="btn btn-success btn-arraw-left">다음</a>
-			<%
-				}
-			%>
-			<!-- 글쓰기 버튼 생성 -->
-			<a href="Popwrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+				<a href="boardPop.jsp" class="btn btn-primary">목록</a>
+				
+				<%
+					if(u_ID != null && u_ID.equals(popbean.getUserID())){
+						
+					
+				%>
+						<a href="update.jsp?popID=<%=popID %>" class="btn btn-primary">수정</a>
+						<a href="deleteAction.jsp?popID=<%=popID %>" class="btn btn-primary">삭제</a>
+				
+				
+				<%
+					}
+				%>
+				
+			</form>
 		</div>
 	</div>
-	<!-- 게시판 메인 페이지 영역 끝 -->
-
-
-
+	<!-- 게시판 글쓰기 양식 영역 끝 -->
 
 
 
@@ -163,9 +184,4 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
-	
-
-
-
 </body>
