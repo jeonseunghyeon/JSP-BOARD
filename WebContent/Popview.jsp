@@ -111,13 +111,11 @@
 			<table class="table table" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+						<th class="bg-primary"colspan="2" style="text-align: center;"><%= popbean.getPopTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="width: 20%;">글 제목</td>
-						<td colspan="2"><%= popbean.getPopTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 					</tr>
 					<tr>
 						<td>작성자</td>
@@ -129,7 +127,6 @@
 								+ popbean.getPopDate().substring(14, 16) + "분" %></td>
 					</tr>
 					<tr>
-						<td>내용</td>
 						<td colspan="2" style="height: 200px; text-align: left;"><%= popbean.getPopContent().replaceAll(" ", "&nbsp;")
 							.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %>
 							
