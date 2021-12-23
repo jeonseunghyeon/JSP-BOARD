@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/custom.css">
 
 <title>글쓰기-Ballade게시판</title>
+
 </head>
 <body>
 <%
@@ -85,7 +86,7 @@
 <!-- 게시판 글쓰기 양식 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="BalladewriteAction.jsp">
+			<form method="post" action="BalladewriteAction.jsp" accept-charset="euc-kr">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -99,6 +100,8 @@
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용" name="balladeContent" maxlength="2048" style="height: 350px;"></textarea></td>
 						</tr>
+						
+						
 					</tbody>
 				</table>
 				<!-- 글쓰기 버튼 생성 -->
