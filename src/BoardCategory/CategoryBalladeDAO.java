@@ -152,5 +152,60 @@ public class CategoryBalladeDAO {
 			 
 		 }
 		 
+		 
+		 public int getNewNext() {
+			 String sql = "select balladeID from ballade order by balladeID desc";
+			 
+			 try {
+				 
+				 	PreparedStatement pstmt = conn.prepareStatement(sql);
+				 	rs = pstmt.executeQuery();
+				 	
+				 	if(rs.next()) {
+						return rs.getInt(1)+1;
+					}
+				 	
+				 	return 1;
+				 
+			 }catch(Exception e) {
+				 e.printStackTrace();
+			 }
+			 return -1;
+		 }
+		 
+		 
+		 public int update(int balladeID, String balladeTitle, String balladeContent) {
+			 String sql = "update ballade set balladeTitle =?, balladeContent = ?, where balladeID = ?";
+			 
+			 try {
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setString(1, balladeTitle);
+				 pstmt.setString(2, balladeContent);
+				 pstmt.setInt(3, balladeID);
+				 return pstmt.executeUpdate();
+				 
+			 }catch(Exception e) {
+				 e.printStackTrace();
+			 }
+			 return -1;
+		 }
+		 
+		 public int delete(int balladeID) {
+			 
+			 String sql = "update ballade set balladeAvailable = 0 where balladeID = ?";
+			 try {
+				 PreparedStatement pstmt = conn.prepareStatement(sql);
+				 pstmt.setInt(1, balladeID);
+				 return pstmt.executeUpdate();
+				 
+			 }catch(Exception e) {
+				 e.printStackTrace();
+				 
+			 }
+			 
+			 return -1;
+		 }
+		
+		 
 
 }

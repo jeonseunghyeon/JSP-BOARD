@@ -120,7 +120,7 @@
 					<tr>
 					
 						<td><%=list.get(i).getRockID() %> </td>
-						<td><a href="Rockview.jsp?RockID=<%= list.get(i).getRockID() %> ">
+						<td><a href="Rockview.jsp?rockID=<%= list.get(i).getRockID() %> ">
 							<%=list.get(i).getRockTitle() %></a></td>
 							
 						<td><%= list.get(i).getUserID() %></td>
